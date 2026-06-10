@@ -1,0 +1,245 @@
+/* Reset du style de base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Corps de la page */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f4f8;
+    color: #333;
+    padding: 20px;
+}
+
+/* En-tête */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #2a9d8f;
+    color: #fff;
+    padding: 15px 20px;
+}
+
+header .logo img {
+    width: 50px;
+    height: 50px;
+}
+
+header .site-title h1 {
+    font-size: 2.5rem;
+}
+/* Menu de navigation */
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    background-color: #264653;
+    padding: 10px 0;
+    margin-top: 20px;
+}
+
+nav ul li {
+    position: relative;
+    padding: 10px 20px;
+}
+
+nav ul li.menu-item {
+    cursor: pointer;
+    color: #fff;
+}
+
+nav ul li.menu-item:hover {
+    background-color: #e9c46a;
+    border-radius: 5px;
+}
+
+/* Sous-menu déroulant */
+nav ul li .dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #264653;
+    list-style-type: none;
+    padding: 10px;
+    width: 200px;
+}
+
+nav ul li:hover .dropdown {
+    display: block;
+}
+
+nav ul li .dropdown li {
+    padding: 10px;
+}
+
+nav ul li .dropdown li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+nav ul li .dropdown li a:hover {
+    background-color: #e9c46a;
+    border-radius: 5px;
+}
+/* Menu de navigation
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    background-color: #264653;
+    padding: 10px 0;
+    margin-top: 20px;
+}
+
+nav ul li {
+    position: relative;
+    padding: 10px 20px;
+}
+
+nav ul li.menu-item {
+    cursor: pointer;
+    color: #fff;
+}
+
+nav ul li.menu-item:hover {
+    background-color: #e9c46a;
+    border-radius: 5px;
+}
+
+/* Sous-menu déroulant */
+/* nav ul li .dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #264653;
+    list-style-type: none;
+    padding: 10px;
+    width: 200px;
+} */
+
+/* nav ul li:hover .dropdown {
+    display: block;
+}
+
+nav ul li .dropdown li {
+    padding: 10px;
+}
+
+nav ul li .dropdown li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+nav ul li .dropdown li a:hover {
+    background-color: #e9c46a;
+    border-radius: 5px;
+} */  
+
+/* Sections */
+section {
+    
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+section h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+section p {
+    font-size: 1.1rem;
+    margin-top: 10px;
+}
+
+section ul {
+    list-style-type: none;
+}
+
+section ul li {
+    margin-bottom: 8px;
+}
+
+section ul li a {
+    color: #2a9d8f;
+    text-decoration: none;
+}
+
+section ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Style du footer */
+footer {
+    background-color: #2a9d8f;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+}
+
+footer ul {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
+    display: flex;
+    justify-content: center;
+}
+
+footer ul li {
+    margin: 0 15px;
+}
+
+footer ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+footer ul li a:hover {
+    text-decoration: underline;
+}
+/* Section bienvenue */
+#bienvenue {
+    background-color: #fff;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+/* Section bienvenue */
+#bienvenue {
+    background-color: #fff;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+/* Style pour la grande image verte */
+.large-green-image {
+    width: 80%;
+    height: auto;
+    max-width: 1200px; /* Largeur maximale agréable */
+    display: block;
+    border-radius: 8px;
+    background-color: green; /* Si l'image ne se charge pas */
+}
+
+#image-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   height:80vh;
+     /* Si vous voulez que l'image soit centrée par rapport à l'écran entier */
+  
+}
+
+.large-green-image {
+    width: 90%; /* Réduit l'image à un tiers de sa taille d'origine */
+height: 60%;
+}
+
