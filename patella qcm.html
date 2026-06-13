@@ -3,55 +3,438 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Image de patelle</title>
+    <title>QCM Patelle</title>
     <link rel="stylesheet" href="./tarif.css" />
+
+    <style>
+      body {
+        font-family: Arial;
+        margin: 0;
+        background: #f4f6f9;
+      }
+
+      header {
+        background: #2a9d8f;
+        color: white;
+        padding: 15px;
+        text-align: center;
+      }
+
+      .container {
+        max-width: 900px;
+        margin: auto;
+        padding: 20px;
+      }
+
+      .card {
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      /* INFOS */
+      .info {
+        display: flex;
+        justify-content: space-between;
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+
+      /* BARRE */
+      #progress {
+        height: 12px;
+        background: #ddd;
+        border-radius: 10px;
+        overflow: hidden;
+        margin-bottom: 15px;
+      }
+
+      #bar {
+        height: 100%;
+        width: 0%;
+        background: #2a9d8f;
+        transition: 0.3s;
+      }
+
+      /* OPTIONS */
+      .option {
+        display: block;
+        padding: 12px;
+        margin: 10px 0;
+        background: #eee;
+        border-radius: 8px;
+        cursor: pointer;
+        border: 2px solid transparent;
+        transition: 0.2s;
+      }
+
+      .option:hover {
+        background: #ddd;
+      }
+
+      /* sélection */
+      .sel {
+        background: #2ecc71 !important;
+        color: white !important;
+      }
+
+      /* bonne réponse */
+      .ok {
+        background: #2ecc71 !important;
+        color: white !important;
+      }
+
+      /* mauvaise réponse */
+      .bad {
+        background: #e74c3c !important;
+        color: white !important;
+      }
+
+      /* boutons */
+      button {
+        margin-top: 10px;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        background: #2a9d8f;
+        color: white;
+        margin-right: 5px;
+      }
+
+      button:hover {
+        background: #005f8d;
+      }
+    </style>
   </head>
+
   <body>
     <header>
-      <div class="logo">
-        <img src="./logo.PNG" alt="Logo Anatomie" />
-      </div>
-
-      <div class="site-title">
-        <h1>Anatomie</h1>
-      </div>
+      <h1>QCM Anatomie - La patellaire</h1>
     </header>
 
-    <main>
-      <section class="content">
-        <h1>PATELLA QCM</h1>
+    <div class="container">
+      <div class="info">
+        <div id="timer">⏱ 0s</div>
+        <div id="score">✔ 0 | ❌ 0</div>
+        <div id="counter"></div>
+      </div>
 
-        <div class="image-container">
-          <img src="./p" alt="Patella" class="grande-image" />
-        </div>
-        <div class="description">
-          <p>
-           
-          </p>
-        </div>
-      </section>
-    </main>
+      <div id="progress"><div id="bar"></div></div>
 
-     <footer>
-      <p> 2026 Anatomie | Tous droits réservés</p>
+      <div class="card">
+        <h2 id="question"></h2>
+        <div id="options"></div>
 
-      <p>
-        <a href="./os coxal.html"> Retour à la page Os Coxal </a>
-      </p>
-    </footer>
-      <h1>DESCRIPTION TECHNIQUE:</h1>
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
+        <button onclick="verifier()">Vérifier</button>
+        <button onclick="precedent()">Précédent</button>
+        <button onclick="suivant()">Suivant</button>
+        <button onclick="recommencer()">Recommencer</button>
+      </div>
+    </div>
+
+    <script>
+      /* ================= QUESTIONS ================= */
+      let questions = [
+        {
+          q: "La patella est aussi appelée ?",
+          o: ["Rotule", "Fibula", "Talus"],
+          a: 0,
+        },
+        {
+          q: "La patella appartient à ?",
+          o: ["La main", "Le genou", "Le pied"],
+          a: 1,
+        },
+        {
+          q: "La patella est un os ?",
+          o: ["Long", "Sésamoïde", "Plat"],
+          a: 1,
+        },
+        {
+          q: "La patella est incluse dans le tendon du ?",
+          o: ["Quadriceps", "Biceps brachial", "Triceps sural"],
+          a: 0,
+        },
+        {
+          q: "La patella se situe ?",
+          o: ["En avant du genou", "En arrière du genou", "Sous le pied"],
+          a: 0,
+        },
+        {
+          q: "La patella s'articule avec ?",
+          o: ["Le fémur", "Le tibia uniquement", "La fibula"],
+          a: 0,
+        },
+        {
+          q: "La face postérieure de la patella est recouverte de ?",
+          o: ["Cartilage articulaire", "Peau", "Muscle"],
+          a: 0,
+        },
+        {
+          q: "La base de la patella est située ?",
+          o: ["En haut", "En bas", "Latéralement"],
+          a: 0,
+        },
+        {
+          q: "L'apex de la patella est situé ?",
+          o: ["En bas", "En haut", "En arrière"],
+          a: 0,
+        },
+        {
+          q: "Le ligament patellaire relie la patella à ?",
+          o: ["La tubérosité tibiale", "La fibula", "Le fémur"],
+          a: 0,
+        },
+        {
+          q: "La fonction principale de la patella est ?",
+          o: [
+            "Augmenter l'efficacité du quadriceps",
+            "Protéger le cerveau",
+            "Former la cheville",
+          ],
+          a: 0,
+        },
+        {
+          q: "La patella participe à l'articulation ?",
+          o: ["Fémoro-patellaire", "Coxo-fémorale", "Tibio-fibulaire"],
+          a: 0,
+        },
+        {
+          q: "La patella améliore ?",
+          o: ["Le bras de levier du quadriceps", "La respiration", "La vision"],
+          a: 0,
+        },
+        {
+          q: "La patella est située dans ?",
+          o: [
+            "Le tendon quadricipital",
+            "Le tendon d'Achille",
+            "Le ligament croisé",
+          ],
+          a: 0,
+        },
+        {
+          q: "La patella possède combien de faces principales ?",
+          o: ["2", "4", "6"],
+          a: 0,
+        },
+        {
+          q: "La face antérieure de la patella est ?",
+          o: ["Rugueuse", "Lisse et cartilagineuse", "Creusée"],
+          a: 0,
+        },
+        {
+          q: "La face postérieure de la patella est ?",
+          o: ["Articulaire", "Musculaire", "Absente"],
+          a: 0,
+        },
+        {
+          q: "La patella protège principalement ?",
+          o: ["L'articulation du genou", "La cheville", "Le coude"],
+          a: 0,
+        },
+        {
+          q: "La patella est le plus grand os ?",
+          o: ["Sésamoïde du corps humain", "Du crâne", "Du pied"],
+          a: 0,
+        },
+        {
+          q: "La patella est reliée au quadriceps par ?",
+          o: [
+            "Le tendon quadricipital",
+            "Le ligament croisé",
+            "Le tendon d'Achille",
+          ],
+          a: 0,
+        },
+        {
+          q: "La luxation de la patella se fait le plus souvent vers ?",
+          o: ["L'extérieur (latéralement)", "L'intérieur", "L'arrière"],
+          a: 0,
+        },
+        {
+          q: "La patella intervient dans le mouvement de ?",
+          o: ["Extension du genou", "Flexion du coude", "Rotation du poignet"],
+          a: 0,
+        },
+        {
+          q: "L'articulation fémoro-patellaire unit ?",
+          o: ["Patella et fémur", "Patella et fibula", "Patella et talus"],
+          a: 0,
+        },
+        {
+          q: "La fracture de la patella survient souvent après ?",
+          o: [
+            "Un choc direct sur le genou",
+            "Une entorse de cheville",
+            "Une fracture du bras",
+          ],
+          a: 0,
+        },
+        {
+          q: "La patella est visible et palpable ?",
+          o: ["À l'avant du genou", "À l'arrière du genou", "Sous le pied"],
+          a: 0,
+        },
+        {
+          q: "La patella possède une forme globalement ?",
+          o: ["Triangulaire", "Cubique", "Sphérique"],
+          a: 0,
+        },
+        {
+          q: "La base de la patella reçoit l'insertion du ?",
+          o: ["Tendon du quadriceps", "Tendon d'Achille", "Biceps fémoral"],
+          a: 0,
+        },
+        {
+          q: "L'apex de la patella donne insertion au ?",
+          o: ["Ligament patellaire", "Ligament croisé postérieur", "Ménisque"],
+          a: 0,
+        },
+        {
+          q: "La patella participe à la stabilité ?",
+          o: ["Du genou", "De la hanche", "Du poignet"],
+          a: 0,
+        },
+        {
+          q: "La principale fonction biomécanique de la patella est de ?",
+          o: [
+            "Augmenter la force du quadriceps",
+            "Supporter le poids du corps seule",
+            "Former la cheville",
+          ],
+          a: 0,
+        },
+      ];
+
+      /* ================= VARIABLES ================= */
+      let i = 0;
+      let selected = null;
+      let checked = false;
+
+      let score = 0;
+      let errors = 0;
+      let answers = Array(questions.length).fill(null);
+
+      let start = Date.now();
+
+      /* ================= AFFICHAGE ================= */
+      function load() {
+        let q = questions[i];
+
+        document.getElementById("question").innerText = i + 1 + ". " + q.q;
+
+        let html = "";
+
+        q.o.forEach((opt, idx) => {
+          let c = "option";
+
+          /* sélection */
+          if (!checked && selected === idx) {
+            c = "option sel";
+          }
+
+          /* correction */
+          if (checked) {
+            if (idx === q.a) {
+              c = "option ok";
+            }
+            if (selected === idx && selected !== q.a) {
+              c = "option bad";
+            }
+          }
+
+          html += `<div class="${c}" onclick="choose(${idx})">${opt}</div>`;
+        });
+
+        document.getElementById("options").innerHTML = html;
+
+        updateUI();
+      }
+
+      /* ================= SELECTION ================= */
+      function choose(x) {
+        if (checked) return;
+        selected = x;
+        load();
+      }
+
+      /* ================= VERIFIER ================= */
+      function verifier() {
+        if (selected === null) return;
+
+        if (answers[i] === null) {
+          answers[i] = selected;
+
+          if (selected === questions[i].a) {
+            score++;
+          } else {
+            errors++;
+          }
+        }
+
+        checked = true;
+        load();
+      }
+
+      /* ================= SUIVANT ================= */
+      function suivant() {
+        if (i < questions.length - 1) {
+          i++;
+          selected = answers[i];
+          checked = answers[i] !== null;
+          load();
+        }
+      }
+
+      /* ================= PRECEDENT ================= */
+      function precedent() {
+        if (i > 0) {
+          i--;
+          selected = answers[i];
+          checked = answers[i] !== null;
+          load();
+        }
+      }
+
+      /* ================= UI GLOBAL ================= */
+      function updateUI() {
+        /* barre */
+        let percent = (i / (questions.length - 1)) * 100;
+        document.getElementById("bar").style.width = percent + "%";
+
+        /* score */
+        document.getElementById("score").innerText =
+          "✔ " + score + " | ❌ " + errors;
+
+        /* compteur */
+        document.getElementById("counter").innerText =
+          i + 1 + " / " + questions.length;
+      }
+
+      /* ================= TIMER ================= */
+      setInterval(() => {
+        let t = Math.floor((Date.now() - start) / 1000);
+        document.getElementById("timer").innerText = "⏱ " + t + "s";
+      }, 1000);
+
+      /* ================= RESET ================= */
+      function recommencer() {
+        location.reload();
+      }
+
+      /* ================= START ================= */
+      load();
+    </script>
+    <br /><br /><br /><br /><br /><br /><br />
+
     <footer>
-      <p> 2026 Anatomie | Tous droits réservés</p>
+      <p>2026 Anatomie | Tous droits réservés</p>
 
       <p>
-        <a href="./os coxal.html"> Retour à la page Os Coxal </a>
-        </a>
+        <a href="./patella.html"> Retour à la page la patella </a>
       </p>
     </footer>
   </body>

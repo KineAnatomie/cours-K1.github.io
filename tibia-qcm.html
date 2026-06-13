@@ -111,7 +111,7 @@
 
   <body>
     <header>
-      <h1>QCM Anatomie - LE FEMUR</h1>
+      <h1>QCM Anatomie - LE TIBIA</h1>
     </header>
 
     <div class="container">
@@ -138,172 +138,180 @@
       /* ================= QUESTIONS ================= */
       let questions = [
         {
-          q: "Le fémur est l’os de ?",
-          o: ["La cuisse", "La jambe", "Le bras"],
-          a: 0,
+          q: "Le tibia est un os de quel membre ?",
+          o: ["Membre supérieur", "Membre inférieur", "Crâne"],
+          a: 1,
         },
         {
-          q: "Le fémur est un os ?",
-          o: ["Long", "Plat", "Court"],
-          a: 0,
-        },
-        {
-          q: "Le fémur est le plus long os du ?",
-          o: ["Corps humain", "Membre supérieur", "Crâne"],
-          a: 0,
-        },
-        {
-          q: "L’extrémité proximale du fémur s’articule avec ?",
-          o: ["L’os coxal", "Le tibia", "La fibula"],
-          a: 0,
-        },
-        {
-          q: "La tête du fémur s’articule avec ?",
-          o: ["L’acétabulum", "Le sacrum", "Le tibia"],
-          a: 0,
-        },
-        {
-          q: "Le col du fémur relie ?",
-          o: ["La tête à la diaphyse", "Le tibia au fémur", "Les condyles"],
-          a: 0,
-        },
-        {
-          q: "Le grand trochanter est situé ?",
-          o: ["Latéralement", "Médialement", "En arrière uniquement"],
-          a: 0,
-        },
-        {
-          q: "Le petit trochanter est situé ?",
-          o: ["Médialement", "Latéralement", "Sur la tête"],
-          a: 0,
-        },
-        {
-          q: "Les trochanters servent principalement à ?",
+          q: "Le tibia est situé ?",
           o: [
-            "L’insertion musculaire",
-            "La circulation sanguine",
-            "La production osseuse",
+            "En dedans de la fibula",
+            "En dehors de la fibula",
+            "Derrière la fibula",
           ],
           a: 0,
         },
         {
-          q: "La diaphyse du fémur possède en arrière ?",
-          o: ["La ligne âpre", "La crête tibiale", "L’acromion"],
+          q: "Le tibia s'articule en haut avec ?",
+          o: ["Le fémur", "L'humérus", "Le radius"],
           a: 0,
         },
         {
-          q: "L’extrémité distale du fémur présente ?",
-          o: ["Deux condyles", "Deux malléoles", "Deux trochanters"],
+          q: "Le tibia s'articule en bas avec ?",
+          o: ["Le talus", "Le calcanéus", "Le fémur"],
           a: 0,
         },
         {
-          q: "Les condyles fémoraux s’articulent avec ?",
-          o: ["Le tibia", "La fibula", "Le talus"],
-          a: 0,
-        },
-        {
-          q: "Le fémur participe à l’articulation ?",
-          o: ["De la hanche et du genou", "Du coude", "Du poignet"],
-          a: 0,
-        },
-        {
-          q: "La tête du fémur possède une petite dépression appelée ?",
-          o: ["Fovéa capitis", "Acromion", "Tubérosité"],
-          a: 0,
-        },
-        {
-          q: "Le ligament rond s’insère sur ?",
-          o: ["La fovéa capitis", "Le grand trochanter", "Le condyle médial"],
-          a: 0,
-        },
-        {
-          q: "L’angle cervico-diaphysaire normal est d’environ ?",
-          o: ["125°", "90°", "180°"],
-          a: 0,
-        },
-        {
-          q: "Une diminution de cet angle correspond à ?",
-          o: ["Coxa vara", "Coxa valga", "Luxation"],
-          a: 0,
-        },
-        {
-          q: "Une augmentation de cet angle correspond à ?",
-          o: ["Coxa valga", "Coxa vara", "Fracture"],
-          a: 0,
-        },
-        {
-          q: "Le fémur transmet le poids du corps du bassin vers ?",
-          o: ["Le tibia", "La fibula", "Le talus"],
+          q: "L'extrémité supérieure du tibia présente ?",
+          o: ["Deux condyles", "Deux trochanters", "Deux malléoles"],
           a: 0,
         },
         {
           q: "Le condyle médial est situé ?",
-          o: ["En dedans", "En dehors", "En avant"],
+          o: ["En dedans", "En dehors", "En arrière"],
           a: 0,
         },
         {
           q: "Le condyle latéral est situé ?",
-          o: ["En dehors", "En dedans", "En arrière"],
-          a: 0,
+          o: ["En dedans", "En dehors", "En avant"],
+          a: 1,
         },
         {
           q: "Entre les condyles se trouve ?",
-          o: ["La fosse intercondylaire", "La malléole", "Le col"],
+          o: ["L'éminence intercondylaire", "La malléole", "Le col"],
           a: 0,
         },
         {
-          q: "La surface patellaire du fémur s’articule avec ?",
-          o: ["La patella", "Le tibia", "La fibula"],
+          q: "La tubérosité tibiale sert à l'insertion du ?",
+          o: ["Ligament patellaire", "Tendon d'Achille", "Biceps brachial"],
           a: 0,
         },
         {
-          q: "Le fémur appartient au squelette ?",
+          q: "La face antérieure du tibia est appelée ?",
+          o: ["Crête tibiale", "Ligne âpre", "Acromion"],
+          a: 0,
+        },
+        {
+          q: "Le tibia est un os ?",
+          o: ["Long", "Plat", "Court"],
+          a: 0,
+        },
+        {
+          q: "La diaphyse correspond à ?",
+          o: [
+            "La partie moyenne de l'os",
+            "L'extrémité supérieure",
+            "L'extrémité inférieure",
+          ],
+          a: 0,
+        },
+        {
+          q: "L'extrémité inférieure du tibia forme ?",
+          o: ["La malléole médiale", "La malléole latérale", "L'olécrâne"],
+          a: 0,
+        },
+        {
+          q: "La malléole médiale appartient au ?",
+          o: ["Tibia", "Fibula", "Talus"],
+          a: 0,
+        },
+        {
+          q: "La malléole latérale appartient à ?",
+          o: ["Fibula", "Tibia", "Fémur"],
+          a: 0,
+        },
+        {
+          q: "Le tibia supporte ?",
+          o: [
+            "La majorité du poids du corps",
+            "Aucun poids",
+            "Le poids du bras",
+          ],
+          a: 0,
+        },
+        {
+          q: "Le tibia est relié à la fibula par ?",
+          o: ["Membrane interosseuse", "Labrum", "Ménisque"],
+          a: 0,
+        },
+        {
+          q: "L'articulation entre tibia et fémur est ?",
+          o: ["Le genou", "La hanche", "L'épaule"],
+          a: 0,
+        },
+        {
+          q: "Le tibia participe à l'articulation ?",
+          o: ["De la cheville", "Du coude", "Du poignet"],
+          a: 0,
+        },
+        {
+          q: "La fracture la plus fréquente du tibia concerne souvent ?",
+          o: ["La diaphyse", "Le crâne", "La scapula"],
+          a: 0,
+        },
+        {
+          q: "Le plateau tibial est situé ?",
+          o: [
+            "À l'extrémité supérieure",
+            "À l'extrémité inférieure",
+            "Au milieu",
+          ],
+          a: 0,
+        },
+        {
+          q: "Le tibia est palpable facilement au niveau ?",
+          o: ["De la crête tibiale", "Du condyle huméral", "Du radius"],
+          a: 0,
+        },
+        {
+          q: "Le tibia possède combien de condyles ?",
+          o: ["2", "1", "3"],
+          a: 0,
+        },
+        {
+          q: "L'incisure fibulaire se situe ?",
+          o: [
+            "À l'extrémité inférieure du tibia",
+            "Sur le fémur",
+            "Sur le talus",
+          ],
+          a: 0,
+        },
+        {
+          q: "Le tibia est l'os principal de ?",
+          o: ["La jambe", "La cuisse", "Le pied"],
+          a: 0,
+        },
+        {
+          q: "Le tibia est situé entre ?",
+          o: [
+            "Le fémur et le talus",
+            "L'humérus et le radius",
+            "La scapula et l'humérus",
+          ],
+          a: 0,
+        },
+        {
+          q: "Le tibia appartient au squelette ?",
           o: ["Appendiculaire", "Axial", "Crânien"],
           a: 0,
         },
         {
-          q: "La fracture du col du fémur touche souvent ?",
+          q: "Le tibia est plus volumineux que ?",
+          o: ["La fibula", "Le fémur", "Le talus"],
+          a: 0,
+        },
+        {
+          q: "L'os associé au tibia dans la jambe est ?",
+          o: ["La fibula", "Le radius", "L'ulna"],
+          a: 0,
+        },
+        {
+          q: "La fonction principale du tibia est ?",
           o: [
-            "Les personnes âgées",
-            "Les nouveau-nés uniquement",
-            "Les enfants uniquement",
-          ],
-          a: 0,
-        },
-        {
-          q: "Le fémur est situé entre ?",
-          o: [
-            "Le bassin et le tibia",
-            "Le tibia et le talus",
-            "La scapula et l’humérus",
-          ],
-          a: 0,
-        },
-        {
-          q: "Le grand trochanter est palpable ?",
-          o: ["Sur le côté de la hanche", "Sur le genou", "Sur la cheville"],
-          a: 0,
-        },
-        {
-          q: "La ligne âpre est située sur quelle face du fémur ?",
-          o: ["Postérieure", "Antérieure", "Médiale"],
-          a: 0,
-        },
-        {
-          q: "Le fémur est vascularisé notamment par ?",
-          o: [
-            "L’artère circonflexe fémorale",
-            "L’aorte thoracique uniquement",
-            "L’artère radiale",
-          ],
-          a: 0,
-        },
-        {
-          q: "La principale fonction du fémur est de ?",
-          o: [
-            "Supporter et transmettre le poids du corps",
-            "Former le crâne",
-            "Protéger le cœur",
+            "Supporter et transmettre le poids",
+            "Produire du sang uniquement",
+            "Protéger le cerveau",
           ],
           a: 0,
         },
@@ -433,7 +441,7 @@
       <p>2026 Anatomie | Tous droits réservés</p>
 
       <p>
-        <a href="./le femur.html"> Retour à la page Le femur </a>
+        <a href="./tibia.html"> Retour à la page Le femur </a>
       </p>
     </footer>
   </body>

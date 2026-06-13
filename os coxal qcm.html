@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>QCM Le femur</title>
+    <title>QCM Hanche</title>
     <link rel="stylesheet" href="./tarif.css" />
 
     <style>
@@ -111,7 +111,7 @@
 
   <body>
     <header>
-      <h1>QCM Anatomie - LE FEMUR</h1>
+      <h1>QCM Anatomie - La Hanche</h1>
     </header>
 
     <div class="container">
@@ -138,176 +138,174 @@
       /* ================= QUESTIONS ================= */
       let questions = [
         {
-          q: "Le fémur est l’os de ?",
-          o: ["La cuisse", "La jambe", "Le bras"],
+          q: "L'articulation de la hanche unit ?",
+          o: ["Tibia-fémur", "Fémur-os coxal", "Fibula-tibia"],
+          a: 1,
+        },
+        {
+          q: "Type de la hanche ?",
+          o: ["Charnière", "Énarthrose", "Pivot"],
+          a: 1,
+        },
+        {
+          q: "Tête fémorale avec ?",
+          o: ["Acétabulum", "Sacrum", "Tibia"],
           a: 0,
         },
         {
-          q: "Le fémur est un os ?",
-          o: ["Long", "Plat", "Court"],
+          q: "Acétabulum appartient ?",
+          o: ["Fémur", "Os coxal", "Sacrum"],
+          a: 1,
+        },
+        { q: "Os coxal ?", o: ["2", "3", "4"], a: 1 },
+        {
+          q: "L’articulation de la hanche est une articulation entre ?",
+          o: ["Tibia et fémur", "Fémur et os coxal", "Fibula et tibia"],
+          a: 1,
+        },
+        {
+          q: "La hanche est une articulation de type ?",
+          o: ["Charnière", "Énarthrose", "Pivot"],
+          a: 1,
+        },
+        {
+          q: "La tête fémorale s’articule avec ?",
+          o: ["Acétabulum", "Sacrum", "Tibia"],
           a: 0,
         },
         {
-          q: "Le fémur est le plus long os du ?",
-          o: ["Corps humain", "Membre supérieur", "Crâne"],
+          q: "L’acétabulum appartient à ?",
+          o: ["Fémur", "Os coxal", "Sacrum"],
+          a: 1,
+        },
+        {
+          q: "L’os coxal est formé de ?",
+          o: [
+            "Ilion, ischion, pubis",
+            "Tibia, fibula, fémur",
+            "Scapula, humérus, radius",
+          ],
           a: 0,
         },
         {
-          q: "L’extrémité proximale du fémur s’articule avec ?",
-          o: ["L’os coxal", "Le tibia", "La fibula"],
+          q: "L’ilion est situé ?",
+          o: ["En haut", "En bas", "En avant uniquement"],
           a: 0,
         },
         {
-          q: "La tête du fémur s’articule avec ?",
-          o: ["L’acétabulum", "Le sacrum", "Le tibia"],
+          q: "L’ischion est situé ?",
+          o: ["Postéro-inférieur", "Antérieur", "Supérieur"],
+          a: 0,
+        },
+        {
+          q: "Le pubis est situé ?",
+          o: ["Antérieur", "Postérieur", "Latéral uniquement"],
           a: 0,
         },
         {
           q: "Le col du fémur relie ?",
-          o: ["La tête à la diaphyse", "Le tibia au fémur", "Les condyles"],
+          o: ["Tête et diaphyse", "Tibia et fémur", "Acétabulum et sacrum"],
           a: 0,
         },
         {
-          q: "Le grand trochanter est situé ?",
-          o: ["Latéralement", "Médialement", "En arrière uniquement"],
+          q: "Le grand trochanter est une partie de ?",
+          o: ["Fémur", "Tibia", "Fibula"],
           a: 0,
         },
         {
-          q: "Le petit trochanter est situé ?",
-          o: ["Médialement", "Latéralement", "Sur la tête"],
+          q: "Le petit trochanter est situé sur ?",
+          o: ["Fémur", "Os coxal", "Sacrum"],
           a: 0,
         },
         {
-          q: "Les trochanters servent principalement à ?",
+          q: "L’articulation de la hanche est aussi appelée ?",
           o: [
-            "L’insertion musculaire",
-            "La circulation sanguine",
-            "La production osseuse",
+            "Coiffe rotulienne",
+            "Articulation coxo-fémorale",
+            "Articulation tibio-fémorale",
+          ],
+          a: 1,
+        },
+        {
+          q: "Le ligament le plus puissant de la hanche ?",
+          o: [
+            "Ligament ilio-fémoral",
+            "Ligament croisé",
+            "Ligament collatéral",
           ],
           a: 0,
         },
         {
-          q: "La diaphyse du fémur possède en arrière ?",
-          o: ["La ligne âpre", "La crête tibiale", "L’acromion"],
+          q: "La hanche permet principalement ?",
+          o: ["Flexion uniquement", "Mouvements multiples", "Aucun mouvement"],
+          a: 1,
+        },
+        {
+          q: "L’acétabulum est formé par ?",
+          o: ["Fusion de 3 os", "Un seul os", "Cartilage uniquement"],
           a: 0,
         },
         {
-          q: "L’extrémité distale du fémur présente ?",
-          o: ["Deux condyles", "Deux malléoles", "Deux trochanters"],
+          q: "La tête fémorale est recouverte de ?",
+          o: ["Cartilage articulaire", "Os spongieux", "Ligament"],
           a: 0,
         },
         {
-          q: "Les condyles fémoraux s’articulent avec ?",
-          o: ["Le tibia", "La fibula", "Le talus"],
+          q: "Le col du fémur est ?",
+          o: ["Extra-articulaire", "Intra-articulaire", "Absent"],
           a: 0,
         },
         {
-          q: "Le fémur participe à l’articulation ?",
-          o: ["De la hanche et du genou", "Du coude", "Du poignet"],
+          q: "La hanche supporte le poids du corps en position ?",
+          o: ["Debout", "Allongée uniquement", "Assise uniquement"],
           a: 0,
         },
         {
-          q: "La tête du fémur possède une petite dépression appelée ?",
-          o: ["Fovéa capitis", "Acromion", "Tubérosité"],
+          q: "La cavité acétabulaire est ?",
+          o: ["Concave", "Convexe", "Plate"],
           a: 0,
         },
         {
-          q: "Le ligament rond s’insère sur ?",
-          o: ["La fovéa capitis", "Le grand trochanter", "Le condyle médial"],
+          q: "Le labrum acétabulaire sert à ?",
+          o: ["Stabiliser l’articulation", "Casser l’os", "Produire du sang"],
           a: 0,
         },
         {
-          q: "L’angle cervico-diaphysaire normal est d’environ ?",
+          q: "La hanche est une articulation ?",
+          o: ["Synoviale", "Fibreuse", "Cartilagineuse uniquement"],
+          a: 0,
+        },
+        {
+          q: "Le ligament rond contient ?",
+          o: ["Artère de la tête fémorale", "Nerf sciatique", "Veine cave"],
+          a: 0,
+        },
+        {
+          q: "L’angle cervico-diaphysaire normal est environ ?",
           o: ["125°", "90°", "180°"],
           a: 0,
         },
         {
-          q: "Une diminution de cet angle correspond à ?",
-          o: ["Coxa vara", "Coxa valga", "Luxation"],
-          a: 0,
-        },
-        {
-          q: "Une augmentation de cet angle correspond à ?",
-          o: ["Coxa valga", "Coxa vara", "Fracture"],
-          a: 0,
-        },
-        {
-          q: "Le fémur transmet le poids du corps du bassin vers ?",
-          o: ["Le tibia", "La fibula", "Le talus"],
-          a: 0,
-        },
-        {
-          q: "Le condyle médial est situé ?",
-          o: ["En dedans", "En dehors", "En avant"],
-          a: 0,
-        },
-        {
-          q: "Le condyle latéral est situé ?",
-          o: ["En dehors", "En dedans", "En arrière"],
-          a: 0,
-        },
-        {
-          q: "Entre les condyles se trouve ?",
-          o: ["La fosse intercondylaire", "La malléole", "Le col"],
-          a: 0,
-        },
-        {
-          q: "La surface patellaire du fémur s’articule avec ?",
-          o: ["La patella", "Le tibia", "La fibula"],
-          a: 0,
-        },
-        {
-          q: "Le fémur appartient au squelette ?",
-          o: ["Appendiculaire", "Axial", "Crânien"],
-          a: 0,
-        },
-        {
-          q: "La fracture du col du fémur touche souvent ?",
+          q: "La coxa vara correspond à ?",
           o: [
-            "Les personnes âgées",
-            "Les nouveau-nés uniquement",
-            "Les enfants uniquement",
+            "Diminution de l’angle",
+            "Augmentation de l’angle",
+            "Absence de fémur",
           ],
           a: 0,
         },
         {
-          q: "Le fémur est situé entre ?",
-          o: [
-            "Le bassin et le tibia",
-            "Le tibia et le talus",
-            "La scapula et l’humérus",
-          ],
+          q: "La coxa valga correspond à ?",
+          o: ["Augmentation de l’angle", "Diminution de l’angle", "Luxation"],
           a: 0,
         },
         {
-          q: "Le grand trochanter est palpable ?",
-          o: ["Sur le côté de la hanche", "Sur le genou", "Sur la cheville"],
-          a: 0,
-        },
-        {
-          q: "La ligne âpre est située sur quelle face du fémur ?",
-          o: ["Postérieure", "Antérieure", "Médiale"],
-          a: 0,
-        },
-        {
-          q: "Le fémur est vascularisé notamment par ?",
-          o: [
-            "L’artère circonflexe fémorale",
-            "L’aorte thoracique uniquement",
-            "L’artère radiale",
-          ],
-          a: 0,
-        },
-        {
-          q: "La principale fonction du fémur est de ?",
-          o: [
-            "Supporter et transmettre le poids du corps",
-            "Former le crâne",
-            "Protéger le cœur",
-          ],
+          q: "La luxation de hanche touche surtout ?",
+          o: ["Enfant/adulte traumatisé", "Tibia", "Poignet"],
           a: 0,
         },
       ];
+
       /* ================= VARIABLES ================= */
       let i = 0;
       let selected = null;
@@ -433,7 +431,7 @@
       <p>2026 Anatomie | Tous droits réservés</p>
 
       <p>
-        <a href="./le femur.html"> Retour à la page Le femur </a>
+        <a href="./os coxal.html"> Retour à la page L'os coxal </a>
       </p>
     </footer>
   </body>
