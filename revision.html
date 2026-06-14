@@ -1,3 +1,4 @@
+<!doctype html>
 <html lang="fr">
   <head>
     <meta charset="UTF-8" />
@@ -101,7 +102,9 @@
       <div class="form">
         <input type="text" id="cours" placeholder="Nouveau cours (ex: Fémur)" />
         <input type="date" id="dateCours" />
-        <button onclick="ajouterCours()">Ajouter cours</button>
+
+        <button onclick="ajouterCours()">Ajouter</button>
+        <button onclick="toggleToday()">Aujourd’hui</button>
 
         <select id="liste" onchange="filtrer()">
           <option value="all">Toutes les matières</option>
@@ -123,11 +126,14 @@
 
     <footer>
       <p>2026 Anatomie | Tous droits réservés</p>
-      <p><a href="./index.html">Retour à l'Anatomie Générale</a></p>
     </footer>
 
     <script>
       let data = JSON.parse(localStorage.getItem("data")) || [];
+      let showTodayOnly = false;
+
+      const notifSound = new Audio("notif.mp3");
+      notifSound.volume = 0.7;
 
       const steps = [
         { n: "J0", d: 0 },
@@ -168,10 +174,15 @@
 
       function render() {
         const filtre = document.getElementById("liste").value;
+        const today = new Date().toISOString().split("T")[0];
 
-        const filtered = data.filter(
+        let filtered = data.filter(
           (e) => filtre === "all" || e.cours === filtre,
         );
+
+        if (showTodayOnly) {
+          filtered = filtered.filter((e) => e.dateISO === today);
+        }
 
         let html = "";
 
@@ -192,19 +203,16 @@
         });
 
         document.getElementById("body").innerHTML = html;
-        checkToday();
       }
 
       function toggle(id) {
         data = data.map((e) => (e.id == id ? { ...e, done: !e.done } : e));
-
         save();
         render();
       }
 
       function supprimer(id) {
         data = data.filter((e) => e.id != id);
-
         save();
         updateListe();
         render();
@@ -215,13 +223,17 @@
         const unique = [...new Set(data.map((e) => e.cours))];
 
         select.innerHTML = `<option value="all">Toutes les matières</option>`;
-
         unique.forEach((c) => {
           select.innerHTML += `<option value="${c}">${c}</option>`;
         });
       }
 
       function filtrer() {
+        render();
+      }
+
+      function toggleToday() {
+        showTodayOnly = !showTodayOnly;
         render();
       }
 
@@ -240,12 +252,44 @@
         if (window.lastAlert === today) return;
         window.lastAlert = today;
 
-        if (Notification.permission === "granted") {
-          new Notification("Révisions du jour", { body: message });
-        } else {
-          alert("Révisions du jour :\n\n" + message);
+        function sendAlert() {
+          notifSound.play().catch(() => {});
+
+          if (Notification.permission === "granted") {
+            new Notification("Révisions du jour", { body: message });
+          } else {
+            alert("Révisions du jour :\n\n" + message);
+          }
         }
+
+        sendAlert();
       }
+
+      function init() {
+        document.body.addEventListener(
+          "click",
+          () => {
+            notifSound
+              .play()
+              .then(() => {
+                notifSound.pause();
+                notifSound.currentTime = 0;
+              })
+              .catch(() => {});
+          },
+          { once: true },
+        );
+
+        checkToday();
+      }
+
+      window.addEventListener("DOMContentLoaded", init);
+      window.addEventListener("focus", checkToday);
+      document.addEventListener("visibilitychange", () => {
+        if (document.visibilityState === "visible") {
+          checkToday();
+        }
+      });
 
       if ("Notification" in window) {
         Notification.requestPermission();
