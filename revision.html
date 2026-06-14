@@ -1,0 +1,258 @@
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Révision Anatomie PRO</title>
+
+    <style>
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: #f4f7fb;
+      }
+
+      header {
+        background: #2a9d8f;
+        color: white;
+        text-align: center;
+        padding: 18px;
+        font-size: 20px;
+        font-weight: bold;
+      }
+
+      main {
+        width: 98%;
+        margin: 15px auto;
+        background: white;
+        padding: 15px;
+        border-radius: 12px;
+        box-sizing: border-box;
+      }
+
+      .form {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        justify-content: center;
+        margin-bottom: 15px;
+      }
+
+      input,
+      select,
+      button {
+        padding: 10px;
+        font-size: 14px;
+      }
+
+      button {
+        background: #2a9d8f;
+        color: white;
+        border: none;
+        cursor: pointer;
+        border-radius: 6px;
+        transition: 0.2s;
+      }
+
+      button:hover {
+        background: #237e74;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        table-layout: fixed;
+      }
+
+      th {
+        background: #2a9d8f;
+        color: white;
+        padding: 12px;
+      }
+
+      td {
+        text-align: center;
+        padding: 12px;
+        border-bottom: 1px solid #ddd;
+        word-break: break-word;
+      }
+
+      .done {
+        background: #d4ffd4;
+        text-decoration: line-through;
+      }
+
+      .actions button {
+        margin: 2px;
+        padding: 6px 8px;
+      }
+
+      footer {
+        text-align: center;
+        padding: 15px;
+        color: #666;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>Révision Anatomie PRO</header>
+
+    <main>
+      <div class="form">
+        <input type="text" id="cours" placeholder="Nouveau cours (ex: Fémur)" />
+        <input type="date" id="dateCours" />
+        <button onclick="ajouterCours()">Ajouter cours</button>
+
+        <select id="liste" onchange="filtrer()">
+          <option value="all">Toutes les matières</option>
+        </select>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Matière</th>
+            <th>Révision</th>
+            <th>Date</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="body"></tbody>
+      </table>
+    </main>
+
+    <footer>
+      <p>2026 Anatomie | Tous droits réservés</p>
+      <p><a href="./index.html">Retour à l'Anatomie Générale</a></p>
+    </footer>
+
+    <script>
+      let data = JSON.parse(localStorage.getItem("data")) || [];
+
+      const steps = [
+        { n: "J0", d: 0 },
+        { n: "J1", d: 1 },
+        { n: "J3", d: 3 },
+        { n: "J7", d: 7 },
+        { n: "J14", d: 14 },
+        { n: "J30", d: 30 },
+      ];
+
+      function ajouterCours() {
+        const cours = document.getElementById("cours").value.trim();
+        const date = document.getElementById("dateCours").value;
+
+        if (!cours || !date) return alert("Remplis tout");
+
+        if (data.some((e) => e.cours === cours)) {
+          return alert("Cours déjà ajouté");
+        }
+
+        steps.forEach((s) => {
+          let d = new Date(date);
+          d.setDate(d.getDate() + s.d);
+
+          data.push({
+            id: Date.now() + Math.random(),
+            cours,
+            step: s.n,
+            dateISO: d.toISOString().split("T")[0],
+            done: false,
+          });
+        });
+
+        save();
+        updateListe();
+        render();
+      }
+
+      function render() {
+        const filtre = document.getElementById("liste").value;
+
+        const filtered = data.filter(
+          (e) => filtre === "all" || e.cours === filtre,
+        );
+
+        let html = "";
+
+        filtered.forEach((e) => {
+          html += `
+            <tr class="${e.done ? "done" : ""}">
+              <td>${e.cours}</td>
+              <td>${e.step}</td>
+              <td>${e.dateISO}</td>
+              <td class="actions">
+                <button onclick="toggle('${e.id}')">
+                  ${e.done ? "↩" : "✔"}
+                </button>
+                <button onclick="supprimer('${e.id}')">🗑</button>
+              </td>
+            </tr>
+          `;
+        });
+
+        document.getElementById("body").innerHTML = html;
+        checkToday();
+      }
+
+      function toggle(id) {
+        data = data.map((e) => (e.id == id ? { ...e, done: !e.done } : e));
+
+        save();
+        render();
+      }
+
+      function supprimer(id) {
+        data = data.filter((e) => e.id != id);
+
+        save();
+        updateListe();
+        render();
+      }
+
+      function updateListe() {
+        const select = document.getElementById("liste");
+        const unique = [...new Set(data.map((e) => e.cours))];
+
+        select.innerHTML = `<option value="all">Toutes les matières</option>`;
+
+        unique.forEach((c) => {
+          select.innerHTML += `<option value="${c}">${c}</option>`;
+        });
+      }
+
+      function filtrer() {
+        render();
+      }
+
+      function save() {
+        localStorage.setItem("data", JSON.stringify(data));
+      }
+
+      function checkToday() {
+        const today = new Date().toISOString().split("T")[0];
+
+        const list = data.filter((e) => e.dateISO === today && !e.done);
+        if (list.length === 0) return;
+
+        const message = list.map((e) => `• ${e.cours} (${e.step})`).join("\n");
+
+        if (window.lastAlert === today) return;
+        window.lastAlert = today;
+
+        if (Notification.permission === "granted") {
+          new Notification("Révisions du jour", { body: message });
+        } else {
+          alert("Révisions du jour :\n\n" + message);
+        }
+      }
+
+      if ("Notification" in window) {
+        Notification.requestPermission();
+      }
+
+      updateListe();
+      render();
+    </script>
+  </body>
+</html>
