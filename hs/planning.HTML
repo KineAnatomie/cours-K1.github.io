@@ -1,9 +1,9 @@
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Planning de Rendez-vous</title>
-    <link rel="stylesheet" href="./css/planning.css">
+    <link rel="stylesheet" href="./css/planning.css" />
     <!-- <style>
       
 
@@ -91,194 +91,222 @@
             background-color: #f44336;
         }
     </style> -->
-</head>
-<body><!-- En-tête avec logo et nom -->
+  </head>
+  <body>
+    <!-- En-tête avec logo et nom -->
     <!-- En-tête avec logo et nom -->
     <header>
-        <div class="logo">
-            <img src="./img/logo.PNG" alt="Logo Canin">
-        </div>
-        <div class="site-title">
-            <h1>Canin</h1>
-        </div>
+      <div class="logo">
+        <img src="./img/logo.PNG" alt="Logo Canin" />
+      </div>
+      <div class="site-title">
+        <h1>Canin</h1>
+      </div>
     </header>
 
     <!-- Menu de navigation -->
     <nav>
-        <ul>
-            <li class="menu-item">Bienvenue
-                <ul class="dropdown">
-                    <li><a href="#histoire">Histoire</a></li>
-                    <li><a href="#mission">Notre Mission</a></li>
-                </ul>
-            </li>
-            <li class="menu-item">Prestations & Tarifs
-                <ul class="dropdown">
-                    <li><a href="#sociabilisation">Sociabilisation</a></li>
-                    <li><a href="#dressage">Dressage de Base</a></li>
-                    <li><a href="#agility">Agility</a></li>
-                    <li><a href="#recall">Rappel (Recall)</a></li>
-                </ul>
-            </li>
-            <li class="menu-item">Réservation
-                <ul class="dropdown">
-                    <li><a href="#formulaire">Formulaire</a></li>
-                    <li><a href="#disponibilites">Disponibilités</a></li>
-                </ul>
-            </li>
-            <li class="menu-item">Contact
-                <ul class="dropdown">
-                    <li><a href="#adresse">Adresse</a></li>
-                    <li><a href="#telephone">Téléphone</a></li>
-                    <li><a href="#email">Email</a></li>
-                </ul>
-            </li>
-        </ul>
+      <ul>
+        <li class="menu-item">
+          Bienvenue
+          <ul class="dropdown">
+            <li><a href="#histoire">Histoire</a></li>
+            <li><a href="#mission">Notre Mission</a></li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          Prestations & Tarifs
+          <ul class="dropdown">
+            <li><a href="#sociabilisation">Sociabilisation</a></li>
+            <li><a href="#dressage">Dressage de Base</a></li>
+            <li><a href="#agility">Agility</a></li>
+            <li><a href="#recall">Rappel (Recall)</a></li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          Réservation
+          <ul class="dropdown">
+            <li><a href="#formulaire">Formulaire</a></li>
+            <li><a href="#disponibilites">Disponibilités</a></li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          Contact
+          <ul class="dropdown">
+            <li><a href="#adresse">Adresse</a></li>
+            <li><a href="#telephone">Téléphone</a></li>
+            <li><a href="#email">Email</a></li>
+          </ul>
+        </li>
+      </ul>
     </nav>
 
-
     <main>
-    <!-- Section bienvenue -->
-    <section id="bienvenue" class="content">
+      <!-- Section bienvenue -->
+      <section id="bienvenue" class="content">
         <h2>Bienvenue</h2>
-        <p>Bienvenue sur notre site Canin, dédié à l'éducation et à l'épanouissement de votre chien...</p>
-    </section>
+        <p>
+          Bienvenue sur notre site Canin, dédié à l'éducation et à
+          l'épanouissement de votre chien...
+        </p>
+      </section>
 
-    <div class="container_plannig">
+      <div class="container_plannig">
         <div class="header_plan">
-            <h1>Planning de Rendez-vous</h1>
+          <h1>Planning de Rendez-vous</h1>
         </div>
 
         <div class="plannings">
-            <!-- Lundi -->
-            <div class="day" id="Lundi">
-                <h3>Lundi</h3>
-                <button onclick="openModal('Lundi')">Réserver un rendez-vous</button>
-            </div>
-            <!-- Mardi -->
-            <div class="day" id="Mardi">
-                <h3>Mardi</h3>
-                <button onclick="openModal('Mardi')">Réserver un rendez-vous</button>
-            </div>
-            <!-- Mercredi -->
-            <div class="day" id="Mercredi">
-                <h3>Mercredi</h3>
-                <button onclick="openModal('Mercredi')">Réserver un rendez-vous</button>
-            </div>
-            <!-- Jeudi -->
-            <div class="day" id="Jeudi">
-                <h3>Jeudi</h3>
-                <button onclick="openModal('Jeudi')">Réserver un rendez-vous</button>
-            </div>
-            <!-- Vendredi -->
-            <div class="day" id="Vendredi">
-                <h3>Vendredi</h3>
-                <button onclick="openModal('Vendredi')">Réserver un rendez-vous</button>
-            </div>
-            <!-- Samedi -->
-            <div class="day" id="Samedi">
-                <h3>Samedi</h3>
-                <button onclick="openModal('Samedi')">Réserver un rendez-vous</button>
-            </div>
-            <!-- Dimanche -->
-            <div class="day" id="Dimanche">
-                <h3>Dimanche</h3>
-                <button onclick="openModal('Dimanche')">Réserver un rendez-vous</button>
-            </div>
+          <!-- Lundi -->
+          <div class="day" id="Lundi">
+            <h3>Lundi</h3>
+            <button onclick="openModal('Lundi')">
+              Réserver un rendez-vous
+            </button>
+          </div>
+          <!-- Mardi -->
+          <div class="day" id="Mardi">
+            <h3>Mardi</h3>
+            <button onclick="openModal('Mardi')">
+              Réserver un rendez-vous
+            </button>
+          </div>
+          <!-- Mercredi -->
+          <div class="day" id="Mercredi">
+            <h3>Mercredi</h3>
+            <button onclick="openModal('Mercredi')">
+              Réserver un rendez-vous
+            </button>
+          </div>
+          <!-- Jeudi -->
+          <div class="day" id="Jeudi">
+            <h3>Jeudi</h3>
+            <button onclick="openModal('Jeudi')">
+              Réserver un rendez-vous
+            </button>
+          </div>
+          <!-- Vendredi -->
+          <div class="day" id="Vendredi">
+            <h3>Vendredi</h3>
+            <button onclick="openModal('Vendredi')">
+              Réserver un rendez-vous
+            </button>
+          </div>
+          <!-- Samedi -->
+          <div class="day" id="Samedi">
+            <h3>Samedi</h3>
+            <button onclick="openModal('Samedi')">
+              Réserver un rendez-vous
+            </button>
+          </div>
+          <!-- Dimanche -->
+          <div class="day" id="Dimanche">
+            <h3>Dimanche</h3>
+            <button onclick="openModal('Dimanche')">
+              Réserver un rendez-vous
+            </button>
+          </div>
         </div>
-    </div>
+      </div>
 
-    <!-- Modal -->
-    <div id="modal" class="modal">
+      <!-- Modal -->
+      <div id="modal" class="modal">
         <div class="modal-content">
-            <h2>Choisir l'heure pour <span id="selected-day"></span></h2>
-            <label for="time">Sélectionner l'heure:</label>
-            <select id="time">
-                <option value="09:00">09:00</option>
-                <option value="10:00">10:00</option>
-                <option value="11:00">11:00</option>
-                <option value="14:00">14:00</option>
-                <option value="15:00">15:00</option>
-                <option value="16:00">16:00</option>
-                <option value="17:00">17:00</option>
-            </select>
-            <br><br>
-            <label for="course">Type de cours:</label>
-            <select id="course">
-                <option value="Yoga">Yoga</option>
-                <option value="Mathématiques">Mathématiques</option>
-                <option value="Anglais">Anglais</option>
-            </select>
-            <br><br>
-            <button onclick="prendreRendezvous()">Confirmer</button>
-            <button class="close-btn" onclick="closeModal()">Fermer</button>
+          <h2>Choisir l'heure pour <span id="selected-day"></span></h2>
+          <label for="time">Sélectionner l'heure:</label>
+          <select id="time">
+            <option value="09:00">09:00</option>
+            <option value="10:00">10:00</option>
+            <option value="11:00">11:00</option>
+            <option value="14:00">14:00</option>
+            <option value="15:00">15:00</option>
+            <option value="16:00">16:00</option>
+            <option value="17:00">17:00</option>
+          </select>
+          <br /><br />
+          <label for="course">Type de cours:</label>
+          <select id="course">
+            <option value="Yoga">Yoga</option>
+            <option value="Mathématiques">Mathématiques</option>
+            <option value="Anglais">Anglais</option>
+          </select>
+          <br /><br />
+          <button onclick="prendreRendezvous()">Confirmer</button>
+          <button class="close-btn" onclick="closeModal()">Fermer</button>
         </div>
-    </div>
+      </div>
 
-    <script>
+      <script>
         let selectedDay = "";
         let selectedTime = "";
 
         // Ouvrir le modal pour choisir l'heure
         function openModal(day) {
-            selectedDay = day;
-            document.getElementById("selected-day").textContent = day;
-            document.getElementById("modal").style.display = "flex";
+          selectedDay = day;
+          document.getElementById("selected-day").textContent = day;
+          document.getElementById("modal").style.display = "flex";
         }
 
         // Fermer le modal
         function closeModal() {
-            document.getElementById("modal").style.display = "none";
+          document.getElementById("modal").style.display = "none";
         }
 
         // Confirmer la réservation
         function prendreRendezvous() {
-            let time = document.getElementById("time").value;
-            let course = document.getElementById("course").value;
-            let dayId = selectedDay + "-" + time;
+          let time = document.getElementById("time").value;
+          let course = document.getElementById("course").value;
+          let dayId = selectedDay + "-" + time;
 
-            // Vérifier si l'heure est déjà occupée
-            if (document.getElementById(dayId)) {
-                alert("Ce créneau horaire est déjà réservé.");
-            } else {
-                // Réserver le créneau et afficher le type de cours
-                let reservedDiv = document.createElement("div");
-                reservedDiv.id = dayId;
-                reservedDiv.classList.add("reserved");
-                reservedDiv.textContent = course + " " + time;
+          // Vérifier si l'heure est déjà occupée
+          if (document.getElementById(dayId)) {
+            alert("Ce créneau horaire est déjà réservé.");
+          } else {
+            // Réserver le créneau et afficher le type de cours
+            let reservedDiv = document.createElement("div");
+            reservedDiv.id = dayId;
+            reservedDiv.classList.add("reserved");
+            reservedDiv.textContent = course + " " + time;
 
-                // Ajouter le bouton Supprimer
-                let deleteButton = document.createElement("button");
-                deleteButton.textContent = "Supprimer";
-                deleteButton.onclick = function() {
-                    deleteBooking(reservedDiv);
-                };
+            // Ajouter le bouton Supprimer
+            let deleteButton = document.createElement("button");
+            deleteButton.textContent = "Supprimer";
+            deleteButton.onclick = function () {
+              deleteBooking(reservedDiv);
+            };
 
-                reservedDiv.appendChild(deleteButton);
+            reservedDiv.appendChild(deleteButton);
 
-                // Ajouter la réservation dans le planning du jour
-                document.getElementById(selectedDay).appendChild(reservedDiv);
-                alert("Rendez-vous réservé pour le " + selectedDay + " à " + time + " pour le cours " + course + ".");
-                closeModal();
-            }
+            // Ajouter la réservation dans le planning du jour
+            document.getElementById(selectedDay).appendChild(reservedDiv);
+            alert(
+              "Rendez-vous réservé pour le " +
+                selectedDay +
+                " à " +
+                time +
+                " pour le cours " +
+                course +
+                ".",
+            );
+            closeModal();
+          }
         }
 
         // Supprimer un rendez-vous
         function deleteBooking(bookingDiv) {
-            bookingDiv.remove();
-            alert("Le rendez-vous a été supprimé.");
+          bookingDiv.remove();
+          alert("Le rendez-vous a été supprimé.");
         }
-    </script>
+      </script>
 
-    <footer>
+      <footer>
         <p>&copy; 2025 Canin | Tous droits réservés</p>
         <ul>
-            <li><a href="#bienvenue">Bienvenue</a></li>
-            <li><a href="#cours-dressage">Cours de Dressage</a></li>
-            <li><a href="#contact">Contact</a></li>
+          <li><a href="#bienvenue">Bienvenue</a></li>
+          <li><a href="#cours-dressage">Cours de Dressage</a></li>
+          <li><a href="#contact">Contact</a></li>
         </ul>
-    </footer>
-</main>
-    
-</body>
+      </footer>
+    </main>
+  </body>
 </html>
