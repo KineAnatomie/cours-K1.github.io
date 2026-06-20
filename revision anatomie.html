@@ -1,0 +1,507 @@
+<!doctype html>
+<html lang="fr">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Révision </title>
+
+
+<style>
+
+body{
+font-family:Arial,sans-serif;
+background:#f5f5f5;
+margin:0;
+}
+
+
+header{
+background:#2a9d8f;
+color:white;
+text-align:center;
+padding:20px;
+}
+
+
+main{
+width:90%;
+max-width:700px;
+margin:auto;
+padding:20px;
+}
+
+
+.carte{
+
+background:white;
+padding:25px;
+border-radius:10px;
+box-shadow:0 2px 10px #aaa;
+margin-top:30px;
+
+}
+
+
+input{
+
+width:90%;
+padding:12px;
+font-size:16px;
+border:2px solid #2a9d8f;
+border-radius:5px;
+
+}
+
+
+button{
+
+background:#2a9d8f;
+color:white;
+border:0;
+padding:12px 20px;
+border-radius:5px;
+cursor:pointer;
+margin-top:20px;
+
+}
+
+
+button:hover{
+
+background:#21867a;
+
+}
+
+
+.correct{
+
+color:green;
+font-weight:bold;
+
+}
+
+
+.faux{
+
+color:red;
+font-weight:bold;
+
+}
+
+
+footer{
+
+background:#2a9d8f;
+color:white;
+text-align:center;
+padding:15px;
+
+}
+
+
+</style>
+
+</head>
+
+
+
+<body>
+
+
+<header>
+
+<h1>
+Révision Anatomie
+</h1>
+
+<h2 id="titreCours"></h2>
+
+
+</header>
+
+
+
+
+<main>
+
+
+<div id="zoneQuestion">
+
+
+Chargement...
+
+
+</div>
+
+
+<div id="resultat"></div>
+
+
+
+</main>
+
+
+
+
+<footer>
+
+2026 Anatomie | Tous droits réservés
+<a href="./index.html">Retour page d'acceuil
+       
+      </a>
+
+</footer>
+
+
+
+
+
+<script>
+
+
+const parametre =
+new URLSearchParams(window.location.search);
+
+
+const cours =
+parametre.get("cours");
+
+
+
+let questions=[];
+
+
+let numero=0;
+
+
+let score=0;
+
+
+let chapitresARevoir=[];
+
+
+
+
+
+fetch("./cours/"+cours+".json")
+
+
+.then(response=>response.json())
+
+
+.then(data=>{
+
+
+questions=data.questions;
+
+
+document.getElementById("titreCours").innerHTML=data.titre;
+
+
+afficherQuestion();
+
+
+});
+
+
+
+
+
+
+
+function afficherQuestion(){
+
+
+let q=questions[numero];
+
+
+
+document.getElementById("zoneQuestion").innerHTML=
+
+
+`
+
+<div class="carte">
+
+
+<h2>
+Question ${numero+1}/${questions.length}
+</h2>
+
+
+<p>
+${q.question}
+</p>
+
+
+<input 
+id="reponse"
+placeholder="Votre réponse">
+
+
+<br>
+
+
+<button onclick="verifier()">
+
+Valider
+
+</button>
+
+
+</div>
+
+`;
+
+
+
+document.getElementById("resultat").innerHTML="";
+
+
+}
+
+
+
+
+
+
+
+
+
+function verifier(){
+
+
+let q=questions[numero];
+
+
+let rep=document
+.getElementById("reponse")
+.value
+.toLowerCase()
+.trim();
+
+
+
+let resultat=document.getElementById("resultat");
+
+
+
+
+
+if(
+rep.length>0 &&
+q.reponse
+.toLowerCase()
+.includes(rep)
+
+){
+
+
+score++;
+
+
+resultat.innerHTML=
+
+`
+
+<p class="correct">
+
+✔ Bonne réponse
+
+</p>
+
+<button onclick="suivante()">
+
+Question suivante
+
+</button>
+
+`;
+
+
+
+}
+
+else{
+
+
+resultat.innerHTML=
+
+`
+
+<p class="faux">
+
+✘ Mauvaise réponse
+
+</p>
+
+
+<p>
+
+La bonne réponse était :
+
+<strong>
+${q.reponse}
+</strong>
+
+</p>
+
+
+<button onclick="suivante()">
+
+Question suivante
+
+</button>
+
+`;
+
+
+
+if(!chapitresARevoir.includes(q.chapitre)){
+
+chapitresARevoir.push(q.chapitre);
+
+}
+
+
+}
+
+
+
+}
+
+
+
+
+
+
+
+
+
+function suivante(){
+
+
+numero++;
+
+
+
+if(numero < questions.length){
+
+
+afficherQuestion();
+
+
+}
+
+else{
+
+
+finRevision();
+
+
+}
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+function finRevision(){
+
+
+
+let html=
+
+
+`
+
+<div class="carte">
+
+
+<h2>
+Révision terminée
+</h2>
+
+
+<h3>
+
+Score :
+${score}/${questions.length}
+
+</h3>
+
+
+`;
+
+
+
+if(chapitresARevoir.length>0){
+
+
+html+=`
+
+<h3>
+Chapitres à revoir :
+</h3>
+
+
+<ul>
+
+${chapitresARevoir.map(
+x=>"<li>"+x+"</li>"
+).join("")}
+
+</ul>
+
+`;
+
+}
+
+else{
+
+
+html+=`
+
+<p class="correct">
+
+Bravo ! Tous les chapitres sont maîtrisés.
+
+</p>
+
+`;
+
+}
+
+
+
+html+=`</div>`;
+
+
+document.getElementById("zoneQuestion").innerHTML=html;
+
+
+document.getElementById("resultat").innerHTML="";
+
+
+}
+
+
+
+</script>
+
+
+</body>
+
+</html>

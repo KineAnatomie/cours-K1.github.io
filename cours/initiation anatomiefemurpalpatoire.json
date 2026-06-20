@@ -1,0 +1,78 @@
+{
+"titre":"Initiation à l'anatomie",
+
+"questions":[
+
+
+{
+"question":"Comment ca va ?",
+"reponse":"ostéologie",
+"chapitre":"Description anatomique"
+},
+
+
+{
+"question":"Comment s'appelle l'étude des articulations ?",
+"reponse":"arthrologie",
+"chapitre":"Description anatomique"
+},
+
+
+{
+"question":"Comment s'appelle l'étude des muscles ?",
+"reponse":"myologie",
+"chapitre":"Description anatomique"
+},
+
+
+{
+"question":"Quels sont les trois types d'os ?",
+"reponse":"os long, os court, os plat",
+"chapitre":"Ostéologie"
+},
+
+
+{
+"question":"Quelle est la partie centrale d'un os long ?",
+"reponse":"diaphyse",
+"chapitre":"Os long"
+},
+
+
+{
+"question":"Quel plan sépare le corps en partie antérieure et postérieure ?",
+"reponse":"plan frontal",
+"chapitre":"Plans anatomiques"
+},
+
+
+{
+"question":"Quel plan sépare le corps en droite et gauche ?",
+"reponse":"plan sagittal",
+"chapitre":"Plans anatomiques"
+},
+
+
+{
+"question":"Quel mouvement correspond au plan sagittal autour de l'axe transversal ?",
+"reponse":"flexion extension",
+"chapitre":"Mouvements"
+},
+
+
+{
+"question":"Quel mouvement correspond au plan frontal autour de l'axe sagittal ?",
+"reponse":"abduction adduction",
+"chapitre":"Mouvements"
+},
+
+
+{
+"question":"Quel mouvement correspond au plan transversal autour de l'axe cranio-caudal ?",
+"reponse":"rotation",
+"chapitre":"Mouvements"
+}
+
+
+]
+}
