@@ -1,189 +1,206 @@
 <!doctype html>
 <html lang="fr">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Anatomie</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Anatomie</title>
 
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #f5f5f5;
-    }
-
-    header {
-      text-align: center;
-      background-color:#2a9d8f;
-      color: white;
-      padding: 20px;
-    }
-
-    .content {
-      padding: 20px;
-      text-align: center;
-    }
-
-    .search-container {
-      margin: 30px auto;
-    }
-
-    .search-container input {
-      width: 350px;
-      max-width: 80%;
-      padding: 12px;
-      font-size: 16px;
-      border: 2px solid #2a9d8f;
-      border-radius: 5px;
-    }
-
-    .search-container button {
-      padding: 12px 20px;
-      font-size: 16px;
-      background-color: #2a9d8f;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      margin-left: 5px;
-    }
-
-    .search-container button:hover {
-      background-color: #2a9d8f;
-    }
-
-    .grid-container {
-      display: flex;
-      justify-content: center;
-      gap: 30px;
-      flex-wrap: wrap;
-      margin-top: 30px;
-    }
-
-    .grid-item {
-      background: white;
-      border-radius: 10px;
-      overflow: hidden;
-      width: 300px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-      transition: transform 0.3s;
-    }
-
-    .grid-item:hover {
-      transform: translateY(-5px);
-    }
-
-    .grid-item a {
-      text-decoration: none;
-      color: black;
-    }
-
-    .cours-image {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-    }
-
-    footer {
-      text-align: center;
-      background-color: #2a9d8f;
-      color: white;
-      padding: 15px;
-      margin-top: 40px;
-    }
-  </style>
-</head>
-
-<body>
-  <!-- En-tête -->
-  <header>
-    <h2>ANATOMIE</h2>
-  </header>
-
-  <main>
-    <section id="cours" class="content">
-      <h2>Cours d'Anatomie</h2>
-
-      <!-- Barre de recherche -->
-      <div class="search-container">
-        <input
-          type="text"
-          id="searchInput"
-          placeholder="Rechercher un terme anatomique..."
-        />
-        <button onclick="rechercherTerme()">Rechercher</button>
-      </div>
-
-      <div class="grid-container">
-        <!-- Carte 1 -->
-        <div class="grid-item">
-          <a href="./initiation anatomie.html">
-            <img
-              src="./toblairone.jpg"
-              alt="Initiation à l'anatomie"
-              class="cours-image"
-            />
-            <h3>Initiation à l'Anatomie</h3>
-          </a>
-        </div>
-
-        <!-- Carte 2 -->
-        <div class="grid-item">
-          <a href="./index2.html">
-            <img
-              src="./squelette image.JPG"
-              alt="Cours d'anatomie"
-              class="cours-image"
-            />
-            <h3>Cours d'Anatomie</h3>
-          </a>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <p>2026 Anatomie | Tous droits réservés</p>
-  </footer>
-
-  <script>
-    const pages = {
-      "patelle": "patelle.html",
-      "le femur": "le femur.html",
-      "tibia": "tibia.html",
-      "fibula": "fibula.html",
-      "humerus": "humerus.html",
-      "radius": "radius.html",
-      "ulna": "ulna.html",
-      "scapula": "scapula.html",
-      "clavicule": "clavicule.html",
-      "sternum": "sternum.html",
-      "vertebre": "vertebre.html",
-      "crane": "crane.html",
-      "mandibule": "mandibule.html"
-    };
-
-    function rechercherTerme() {
-      const terme = document
-        .getElementById("searchInput")
-        .value
-        .trim()
-        .toLowerCase();
-
-      if (pages[terme]) {
-        window.location.href = pages[terme];
-      } else {
-        alert("Aucune page trouvée pour : " + terme);
+    <style>
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background-color: #f5f5f5;
       }
-    }
 
-    document
-      .getElementById("searchInput")
-      .addEventListener("keydown", function(event) {
-        if (event.key === "Enter") {
-          rechercherTerme();
+      header {
+        text-align: center;
+        background-color: #2a9d8f;
+        color: white;
+        padding: 20px;
+      }
+
+      .content {
+        padding: 20px;
+        text-align: center;
+      }
+
+      .search-container {
+        margin: 30px auto;
+      }
+
+      .search-container input {
+        width: 350px;
+        max-width: 80%;
+        padding: 12px;
+        font-size: 16px;
+        border: 2px solid #2a9d8f;
+        border-radius: 5px;
+      }
+
+      .search-container button {
+        padding: 12px 20px;
+        font-size: 16px;
+        background-color: #2a9d8f;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-left: 5px;
+      }
+
+      .search-container button:hover {
+        background-color: #2a9d8f;
+      }
+
+      .grid-container {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        flex-wrap: wrap;
+        margin-top: 30px;
+      }
+
+      .grid-item {
+        background: white;
+        border-radius: 10px;
+        overflow: hidden;
+        width: 300px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s;
+      }
+
+      .grid-item:hover {
+        transform: translateY(-5px);
+      }
+
+      .grid-item a {
+        text-decoration: none;
+        color: black;
+      }
+
+      .cours-image {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+      }
+
+      footer {
+        text-align: center;
+        background-color: #2a9d8f;
+        color: white;
+        padding: 15px;
+        margin-top: 40px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- En-tête -->
+    <header>
+      <h2>ANATOMIE</h2>
+    </header>
+
+    <main>
+      <section id="cours" class="content">
+        <h2>Cours d'Anatomie</h2>
+
+        <!-- Barre de recherche -->
+        <div class="search-container">
+          <input
+            type="text"
+            id="searchInput"
+            placeholder="Rechercher un terme anatomique..."
+          />
+          <button onclick="rechercherTerme()">Rechercher</button>
+        </div>
+
+        <div class="grid-container">
+          <!-- Carte 1 -->
+          <div class="grid-item">
+            <a href="./initiation anatomie.html">
+              <img
+                src="./toblairone.jpg"
+                alt="Initiation à l'anatomie"
+                class="cours-image"
+              />
+              <h3>Initiation à l'Anatomie</h3>
+            </a>
+          </div>
+
+          <!-- Carte 2 -->
+          <div class="grid-item">
+            <a href="./index2.html">
+              <img
+                src="./squelette image.JPG"
+                alt="Cours d'anatomie"
+                class="cours-image"
+              />
+              <h3>Cours d'Anatomie</h3>
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>2026 Anatomie | Tous droits réservés</p>
+    </footer>
+
+    <script>
+      const pages = {
+        patella: "patelle.html",
+        fémur: "le femur.html",
+        tibia: "tibia.html",
+        fibula: "fibula.html",
+        humerus: "humerus.html",
+        radius: "radius.html",
+        ulna: "ulna.html",
+        scapula: "scapula.html",
+        clavicule: "clavicule.html",
+        sternum: "sternum.html",
+        vertebre: "vertebre.html",
+        crane: "crane.html",
+        mandibule: "mandibule.html",
+        "os coxal": "os coxal.html",
+        "initiation à l'anatomie": "initiation anatomie.html",
+        "cours d'anatomie": "index2.html",
+        "membre inférieur": "membre-inferieur.html",
+        "membre supérieur": "membre-superieur.html",
+        cinéliogie: "cinelogie.html",
+        tronc: "tronc.html",
+        planning: "revision.html",
+        neurologie: "neurologie.html",
+        tarse: "tarse.html",
+        métatarse: "metatarse.html",
+        phalanges: "phalanges.html",
+        "os sémanoide du pied": "os semanoide du pied.html",
+        épaule: "epaule.html",
+        "os du bras": "os bras.html",
+        carpe: "carpe.html",
+        métacarpe: "metacarpe.html",
+        "os sésamoide": "os sesamoide.html",
+      };
+
+      function rechercherTerme() {
+        const terme = document
+          .getElementById("searchInput")
+          .value.trim()
+          .toLowerCase();
+
+        if (pages[terme]) {
+          window.location.href = pages[terme];
+        } else {
+          alert("Aucune page trouvée pour : " + terme);
         }
-      });
-  </script>
-</body>
+      }
+
+      document
+        .getElementById("searchInput")
+        .addEventListener("keydown", function (event) {
+          if (event.key === "Enter") {
+            rechercherTerme();
+          }
+        });
+    </script>
+  </body>
 </html>

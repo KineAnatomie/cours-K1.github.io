@@ -3,59 +3,450 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Image de l'Os Coxal</title>
+    <title>QCM Le femur</title>
     <link rel="stylesheet" href="./tarif.css" />
+
+    <style>
+      body {
+        font-family: Arial;
+        margin: 0;
+        background: #f4f6f9;
+      }
+
+      header {
+        background: #2a9d8f;
+        color: white;
+        padding: 15px;
+        text-align: center;
+      }
+
+      .container {
+        max-width: 900px;
+        margin: auto;
+        padding: 20px;
+      }
+
+      .card {
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      /* INFOS */
+      .info {
+        display: flex;
+        justify-content: space-between;
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+
+      /* BARRE */
+      #progress {
+        height: 12px;
+        background: #ddd;
+        border-radius: 10px;
+        overflow: hidden;
+        margin-bottom: 15px;
+      }
+
+      #bar {
+        height: 100%;
+        width: 0%;
+        background: #2a9d8f;
+        transition: 0.3s;
+      }
+
+      /* OPTIONS */
+      .option {
+        display: block;
+        padding: 12px;
+        margin: 10px 0;
+        background: #eee;
+        border-radius: 8px;
+        cursor: pointer;
+        border: 2px solid transparent;
+        transition: 0.2s;
+      }
+
+      .option:hover {
+        background: #ddd;
+      }
+
+      /* sélection */
+      .sel {
+        background: #2ecc71 !important;
+        color: white !important;
+      }
+
+      /* bonne réponse */
+      .ok {
+        background: #2ecc71 !important;
+        color: white !important;
+      }
+
+      /* mauvaise réponse */
+      .bad {
+        background: #e74c3c !important;
+        color: white !important;
+      }
+
+      /* boutons */
+      button {
+        margin-top: 10px;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        background: #2a9d8f;
+        color: white;
+        margin-right: 5px;
+      }
+
+      button:hover {
+        background: #005f8d;
+      }
+    </style>
   </head>
+
   <body>
     <header>
-      <div class="logo">
-        <img src="./logo guinot.JPG" alt="Logo guinot" />
-      </div>
-      
-
+      <br />
       <div class="site-title">
-        <h3>QCM - ANATOMIE</h3>
+        <h2>QCM - LE FEMUR</h2>
       </div>
-       <p>
-        <a href="./index.html">**</a>
-      </p>
+<div>      <a href="./le femur.html">
+        <img
+          src="./retour image.JPG"
+          alt="retour page precedente"
+          style="width: 50px; height: 50px"
+        />
+      </a>
+        <a href="./index.html">
+              <img
+                src="./retour arriere page acceuil.JPG"
+                alt="retour page d'acceuil"
+                style=" width: 50px;
+    height: 50px;"
+              />
     </header>
 
-    <main>
-      <section class="content">
-        <h2>L'OS COXAL QCM</h2>
+    <div class="container">
+      <div class="info">
+        <div id="timer">⏱ 0s</div>
+        <div id="score">✔ 0 | ❌ 0</div>
+        <div id="counter"></div>
+      </div>
 
-        <div class="image-container">
-          <img
-            src=""
-            alt="Os Coxal"
-            class="grande-image"
-          />
-        </div>
-      </section>
-    </main>
+      <div id="progress"><div id="bar"></div></div>
 
-    <footer>
-      <p> 2026 Anatomie | Tous droits réservés</p>
+      <div class="card">
+        <h2 id="question"></h2>
+        <div id="options"></div>
 
-      <p>
-        <a href="./os coxal.html"> Retour à la page Os Coxal </a>
-      </p>
-    </footer>
-      <h2>DESCRIPTION TECHNIQUE:</h2>
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <footer>
-      <p> 2026 Anatomie | Tous droits réservés</p>
+        <button onclick="verifier()">Vérifier</button>
+        <button onclick="precedent()">Précédent</button>
+        <button onclick="suivant()">Suivant</button>
+        <button onclick="recommencer()">Recommencer</button>
+      </div>
+    </div>
 
-      <p>
-        <a href="./os coxal.html"> Retour à la page Os Coxal </a>
-        </a>
-      </p>
-    </footer>
+    <script>
+      /* ================= QUESTIONS ================= */
+      let questions = [
+        {
+          q: "Le fémur est l’os de ?",
+          o: ["La cuisse", "La jambe", "Le bras"],
+          a: 0,
+        },
+        {
+          q: "Le fémur est un os ?",
+          o: ["Long", "Plat", "Court"],
+          a: 0,
+        },
+        {
+          q: "Le fémur est le plus long os du ?",
+          o: ["Corps humain", "Membre supérieur", "Crâne"],
+          a: 0,
+        },
+        {
+          q: "L’extrémité proximale du fémur s’articule avec ?",
+          o: ["L’os coxal", "Le tibia", "La fibula"],
+          a: 0,
+        },
+        {
+          q: "La tête du fémur s’articule avec ?",
+          o: ["L’acétabulum", "Le sacrum", "Le tibia"],
+          a: 0,
+        },
+        {
+          q: "Le col du fémur relie ?",
+          o: ["La tête à la diaphyse", "Le tibia au fémur", "Les condyles"],
+          a: 0,
+        },
+        {
+          q: "Le grand trochanter est situé ?",
+          o: ["Latéralement", "Médialement", "En arrière uniquement"],
+          a: 0,
+        },
+        {
+          q: "Le petit trochanter est situé ?",
+          o: ["Médialement", "Latéralement", "Sur la tête"],
+          a: 0,
+        },
+        {
+          q: "Les trochanters servent principalement à ?",
+          o: [
+            "L’insertion musculaire",
+            "La circulation sanguine",
+            "La production osseuse",
+          ],
+          a: 0,
+        },
+        {
+          q: "La diaphyse du fémur possède en arrière ?",
+          o: ["La ligne âpre", "La crête tibiale", "L’acromion"],
+          a: 0,
+        },
+        {
+          q: "L’extrémité distale du fémur présente ?",
+          o: ["Deux condyles", "Deux malléoles", "Deux trochanters"],
+          a: 0,
+        },
+        {
+          q: "Les condyles fémoraux s’articulent avec ?",
+          o: ["Le tibia", "La fibula", "Le talus"],
+          a: 0,
+        },
+        {
+          q: "Le fémur participe à l’articulation ?",
+          o: ["De la hanche et du genou", "Du coude", "Du poignet"],
+          a: 0,
+        },
+        {
+          q: "La tête du fémur possède une petite dépression appelée ?",
+          o: ["Fovéa capitis", "Acromion", "Tubérosité"],
+          a: 0,
+        },
+        {
+          q: "Le ligament rond s’insère sur ?",
+          o: ["La fovéa capitis", "Le grand trochanter", "Le condyle médial"],
+          a: 0,
+        },
+        {
+          q: "L’angle cervico-diaphysaire normal est d’environ ?",
+          o: ["125°", "90°", "180°"],
+          a: 0,
+        },
+        {
+          q: "Une diminution de cet angle correspond à ?",
+          o: ["Coxa vara", "Coxa valga", "Luxation"],
+          a: 0,
+        },
+        {
+          q: "Une augmentation de cet angle correspond à ?",
+          o: ["Coxa valga", "Coxa vara", "Fracture"],
+          a: 0,
+        },
+        {
+          q: "Le fémur transmet le poids du corps du bassin vers ?",
+          o: ["Le tibia", "La fibula", "Le talus"],
+          a: 0,
+        },
+        {
+          q: "Le condyle médial est situé ?",
+          o: ["En dedans", "En dehors", "En avant"],
+          a: 0,
+        },
+        {
+          q: "Le condyle latéral est situé ?",
+          o: ["En dehors", "En dedans", "En arrière"],
+          a: 0,
+        },
+        {
+          q: "Entre les condyles se trouve ?",
+          o: ["La fosse intercondylaire", "La malléole", "Le col"],
+          a: 0,
+        },
+        {
+          q: "La surface patellaire du fémur s’articule avec ?",
+          o: ["La patella", "Le tibia", "La fibula"],
+          a: 0,
+        },
+        {
+          q: "Le fémur appartient au squelette ?",
+          o: ["Appendiculaire", "Axial", "Crânien"],
+          a: 0,
+        },
+        {
+          q: "La fracture du col du fémur touche souvent ?",
+          o: [
+            "Les personnes âgées",
+            "Les nouveau-nés uniquement",
+            "Les enfants uniquement",
+          ],
+          a: 0,
+        },
+        {
+          q: "Le fémur est situé entre ?",
+          o: [
+            "Le bassin et le tibia",
+            "Le tibia et le talus",
+            "La scapula et l’humérus",
+          ],
+          a: 0,
+        },
+        {
+          q: "Le grand trochanter est palpable ?",
+          o: ["Sur le côté de la hanche", "Sur le genou", "Sur la cheville"],
+          a: 0,
+        },
+        {
+          q: "La ligne âpre est située sur quelle face du fémur ?",
+          o: ["Postérieure", "Antérieure", "Médiale"],
+          a: 0,
+        },
+        {
+          q: "Le fémur est vascularisé notamment par ?",
+          o: [
+            "L’artère circonflexe fémorale",
+            "L’aorte thoracique uniquement",
+            "L’artère radiale",
+          ],
+          a: 0,
+        },
+        {
+          q: "La principale fonction du fémur est de ?",
+          o: [
+            "Supporter et transmettre le poids du corps",
+            "Former le crâne",
+            "Protéger le cœur",
+          ],
+          a: 0,
+        },
+      ];
+      /* ================= VARIABLES ================= */
+      let i = 0;
+      let selected = null;
+      let checked = false;
+
+      let score = 0;
+      let errors = 0;
+      let answers = Array(questions.length).fill(null);
+
+      let start = Date.now();
+
+      /* ================= AFFICHAGE ================= */
+      function load() {
+        let q = questions[i];
+
+        document.getElementById("question").innerText = i + 1 + ". " + q.q;
+
+        let html = "";
+
+        q.o.forEach((opt, idx) => {
+          let c = "option";
+
+          /* sélection */
+          if (!checked && selected === idx) {
+            c = "option sel";
+          }
+
+          /* correction */
+          if (checked) {
+            if (idx === q.a) {
+              c = "option ok";
+            }
+            if (selected === idx && selected !== q.a) {
+              c = "option bad";
+            }
+          }
+
+          html += `<div class="${c}" onclick="choose(${idx})">${opt}</div>`;
+        });
+
+        document.getElementById("options").innerHTML = html;
+
+        updateUI();
+      }
+
+      /* ================= SELECTION ================= */
+      function choose(x) {
+        if (checked) return;
+        selected = x;
+        load();
+      }
+
+      /* ================= VERIFIER ================= */
+      function verifier() {
+        if (selected === null) return;
+
+        if (answers[i] === null) {
+          answers[i] = selected;
+
+          if (selected === questions[i].a) {
+            score++;
+          } else {
+            errors++;
+          }
+        }
+
+        checked = true;
+        load();
+      }
+
+      /* ================= SUIVANT ================= */
+      function suivant() {
+        if (i < questions.length - 1) {
+          i++;
+          selected = answers[i];
+          checked = answers[i] !== null;
+          load();
+        }
+      }
+
+      /* ================= PRECEDENT ================= */
+      function precedent() {
+        if (i > 0) {
+          i--;
+          selected = answers[i];
+          checked = answers[i] !== null;
+          load();
+        }
+      }
+
+      /* ================= UI GLOBAL ================= */
+      function updateUI() {
+        /* barre */
+        let percent = (i / (questions.length - 1)) * 100;
+        document.getElementById("bar").style.width = percent + "%";
+
+        /* score */
+        document.getElementById("score").innerText =
+          "✔ " + score + " | ❌ " + errors;
+
+        /* compteur */
+        document.getElementById("counter").innerText =
+          i + 1 + " / " + questions.length;
+      }
+
+      /* ================= TIMER ================= */
+      setInterval(() => {
+        let t = Math.floor((Date.now() - start) / 1000);
+        document.getElementById("timer").innerText = "⏱ " + t + "s";
+      }, 1000);
+
+      /* ================= RESET ================= */
+      function recommencer() {
+        location.reload();
+      }
+
+      /* ================= START ================= */
+      load();
+    </script>
+    <br /><br /><br /><br /><br /><br /><br />
   </body>
+  <footer>
+    <p>2026 Anatomie | Tous droits réservés</p>
+  </footer>
 </html>
