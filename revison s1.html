@@ -56,7 +56,18 @@
 
 
 
-<style> .check { display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; margin-right: 8px; color: white; border-radius: 3px; font-size: 17px; font-weight: bold; cursor: pointer; vertical-align: middle; } .rouge { background-color: red; } .orange { background-color: orange; } .vert { background-color: green; } /* Texte invisible destiné à la synthèse vocale */ .sr-only { position: absolute !important; width: 1px !important; height: 1px !important; padding: 0 !important; margin: -1px !important; overflow: hidden !important; clip: rect(0, 0, 0, 0) !important; white-space: nowrap !important; border: 0 !important; } </style> <script> function changerCouleur(coche) { let couleur; if (coche.classList.contains("rouge")) { coche.classList.remove("rouge"); coche.classList.add("orange"); couleur = "orange"; } else if (coche.classList.contains("orange")) { coche.classList.remove("orange"); coche.classList.add("vert"); couleur = "verte"; } else { coche.classList.remove("vert"); coche.classList.add("rouge"); couleur = "rouge"; } /* Mise à jour du texte accessible de la coche */ coche.setAttribute( "aria-label", "Case cochée, couleur " + couleur ); /* Mise à jour de l'annonce pour la synthèse vocale */ const annonce = document.getElementById("annonce-couleur"); if (annonce) { annonce.textContent = ""; setTimeout(function() { annonce.textContent = "Case cochée, couleur " + couleur; }, 50); } } </script> <!-- Zone invisible lue par la synthèse vocale --> <div id="annonce-couleur" class="sr-only" aria-live="assertive" aria-atomic="true" > Case cochée, couleur rouge </div> <h4>
+<style> .check { display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; margin-right: 8px; color: white; border-radius: 3px; font-size: 17px; font-weight: bold; cursor: pointer; vertical-align: middle; } .rouge { background-color: red; } .orange { background-color: orange; } .vert { background-color: green; } /* Texte invisible destiné à la synthèse vocale */ .sr-only { position: absolute !important; width: 1px !important; height: 1px !important; padding: 0 !important; margin: -1px !important; overflow: hidden !important; clip: rect(0, 0, 0, 0) !important; white-space: nowrap !important; border: 0 !important; } </style> <script> function changerCouleur(coche) { let couleur; if (coche.classList.contains("rouge")) { coche.classList.remove("rouge"); coche.classList.add("orange"); couleur = "orange"; } else if (coche.classList.contains("orange")) { coche.classList.remove("orange"); coche.classList.add("vert"); couleur = "verte"; } else { coche.classList.remove("vert"); coche.classList.add("rouge"); couleur = "rouge"; } /* Mise à jour du texte accessible de la coche */ coche.setAttribute( "aria-label", "Case cochée, couleur " + couleur ); /* Mise à jour de l'annonce pour la synthèse vocale */ const annonce = document.getElementById("annonce-couleur"); if (annonce) { annonce.textContent = ""; setTimeout(function() { annonce.textContent = "Case cochée, couleur " + couleur; }, 50); } } </script> 
+
+
+
+
+
+<!-- Zone invisible lue par la synthèse vocale --> <div id="annonce-couleur" class="sr-only" aria-live="assertive" aria-atomic="true" > Case cochée, couleur rouge </div> 
+ 
+
+
+<h4>
+
 <span
     class="check rouge"
     role="checkbox"
@@ -88,6 +99,194 @@
 
 
 
+<h4>
+
+<span
+    class="check rouge"
+    role="checkbox"
+    aria-checked="true"
+    aria-label="Case cochée, couleur rouge"
+    tabindex="0"
+    onclick="changerCouleur(this)"
+    onkeydown="
+        if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            changerCouleur(this);
+        }
+    "
+>✓</span>
+
+2- Quelle est la position de référence ?
+
+<a href="#q2">
+    <button class="bnt-reponse">Réponse</button>
+</a>
+
+
+</h4> <br>
+
+
+
+
+ 
+
+
+<h4>
+
+<span
+    class="check rouge"
+    role="checkbox"
+    aria-checked="true"
+    aria-label="Case cochée, couleur rouge"
+    tabindex="0"
+    onclick="changerCouleur(this)"
+    onkeydown="
+        if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            changerCouleur(this);
+        }
+    "
+>✓</span>
+
+3- Si vous observez une planche anatomique ne présentant pas de légende, est ce un droit ou un gauche, pourquoi ?
+
+<a href="#q3">
+    <button class="bnt-reponse">Réponse</button>
+</a>
+
+
+</h4> <br>
+
+
+ 
+
+
+
+
+ <h4>
+
+<span
+    class="check rouge"
+    role="checkbox"
+    aria-checked="true"
+    aria-label="Case cochée, couleur rouge"
+    tabindex="0"
+    onclick="changerCouleur(this)"
+    onkeydown="
+        if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            changerCouleur(this);
+        }
+    "
+>✓</span>
+
+4- Citez et définissez les plans anatomiques de références. 
+
+<a href="#q4">
+    <button class="bnt-reponse">Réponse</button>
+</a>
+
+
+</h4> <br>
+
+
+
+
+
+
+
+
+<h4>
+
+<span
+    class="check rouge"
+    role="checkbox"
+    aria-checked="true"
+    aria-label="Case cochée, couleur rouge"
+    tabindex="0"
+    onclick="changerCouleur(this)"
+    onkeydown="
+        if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            changerCouleur(this);
+        }
+    "
+>✓</span>
+
+5- Citez les axes associés à leurs plans respectifs. 
+
+<a href="#q5">
+    <button class="bnt-reponse">Réponse</button>
+</a>
+
+
+</h4> <br>
+
+
+
+
+
+
+
+ <h4>
+
+<span
+    class="check rouge"
+    role="checkbox"
+    aria-checked="true"
+    aria-label="Case cochée, couleur rouge"
+    tabindex="0"
+    onclick="changerCouleur(this)"
+    onkeydown="
+        if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            changerCouleur(this);
+        }
+    "
+>✓</span>
+
+6- Que signifie médial, latéral, crânial, caudal ?
+
+<a href="#q6">
+    <button class="bnt-reponse">Réponse</button>
+</a>
+
+
+</h4> <br>
+
+ 
+
+
+
+
+
+
+</h4> <br><h4>
+
+<span
+    class="check rouge"
+    role="checkbox"
+    aria-checked="true"
+    aria-label="Case cochée, couleur rouge"
+    tabindex="0"
+    onclick="changerCouleur(this)"
+    onkeydown="
+        if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            changerCouleur(this);
+        }
+    "
+>✓</span>
+
+7- Citez les 3 types de muscles et ce à quoi ils correspondent.
+
+<a href="#q7">
+    <button class="bnt-reponse">Réponse</button>
+</a>
+
+
+
+</h4> <br>
 
 
 
@@ -95,46 +294,174 @@
 
  
 
-<h4> <span class="check rouge" onclick="changerCouleur(this)">✓</span>2- Quelle est la position de référence ?<a href="#q2"> <button class="bnt-reponse">Réponse</button> </a> </h4> <br> 
 
 
+
+
+</h4> <br>
+
+
+
+<h4>
+
+<span
+    class="check rouge"
+    role="checkbox"
+    aria-checked="true"
+    aria-label="Case cochée, couleur rouge"
+    tabindex="0"
+    onclick="changerCouleur(this)"
+    onkeydown="
+        if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            changerCouleur(this);
+        }
+    "
+>✓</span>
+
+8- Citez les différents types d’os, leurs spécificités et un exemple pour chaque.
+
+<a href="#q8">
+    <button class="bnt-reponse">Réponse</button>
+</a>
+
+
+
+</h4> <br>
+
+
+
+
+
+
+
+<h4>
+
+<span
+    class="check rouge"
+    role="checkbox"
+    aria-checked="true"
+    aria-label="Case cochée, couleur rouge"
+    tabindex="0"
+    onclick="changerCouleur(this)"
+    onkeydown="
+        if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            changerCouleur(this);
+        }
+    "
+>✓</span>
+
+9- De quoi se compose la ceinture scapulaire, à quoi sert-elle ? Même question pour la ceinture pelvienne 
+
+<a href="#q9">
+    <button class="bnt-reponse">Réponse</button>
+</a>
+
+
+
+</h4> <br>
+
+
+
+
+
+
+
+
+<h4>
+<span
+    class="check rouge"
+    role="checkbox"
+    aria-checked="true"
+    aria-label="Case cochée, couleur rouge"
+    tabindex="0"
+    onclick="changerCouleur(this)"
+    onkeydown="
+        if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            changerCouleur(this);
+        }
+    "
+>✓</span>
+
+10- Qu’est-ce que la jambe ? Et le bras ? 
+
+<a href="#q10">
+    <button class="bnt-reponse">Réponse</button>
+</a>
+
+
+
+</h4> <br>
 
  
 
-<h4> <span class="check rouge" onclick="changerCouleur(this)">✓</span>3- Si vous observez une planche anatomique ne présentant pas de légende, est ce un droit ou un gauche, pourquoi ? <a href="#q3"> <button class="bnt-reponse">Réponse</button> </a> </h4> <br> 
 
 
- 
 
 
 
-<h4> <span class="check rouge" onclick="changerCouleur(this)">✓</span>4- Citez et définissez les plans anatomiques de références. <a href="#q4"> <button class="bnt-reponse">Réponse</button> </a> </h4> <br>
 
 
 
 
 
+<h4>
+<span
+    class="check rouge"
+    role="checkbox"
+    aria-checked="true"
+    aria-label="Case cochée, couleur rouge"
+    tabindex="0"
+    onclick="changerCouleur(this)"
+    onkeydown="
+        if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            changerCouleur(this);
+        }
+    "
+>✓</span>
 
+11-  Citez les 3 catégories d’articulations, définissez-les succinctement.
 
+<a href="#q11">
+    <button class="bnt-reponse">Réponse</button>
+</a>
 
 
-<h4> <span class="check rouge" onclick="changerCouleur(this)">✓</span>5- Citez les axes associés à leurs plans respectifs. <a href="#q5"> <button class="bnt-reponse">Réponse</button> </a> </h4> <br>
 
+</h4> <br>
 
- 
- 
 
 
-<h4> <span class="check rouge" onclick="changerCouleur(this)">✓</span>6- Que signifie médial, latéral, crânial, caudal ?<a href="#q6"> <button class="bnt-reponse">Réponse</button> </a> </h4> <br>
 
 
 
+<h4>
+<span
+    class="check rouge"
+    role="checkbox"
+    aria-checked="true"
+    aria-label="Case cochée, couleur rouge"
+    tabindex="0"
+    onclick="changerCouleur(this)"
+    onkeydown="
+        if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            changerCouleur(this);
+        }
+    "
+>✓</span>
 
+12-  Citez et définissez les types articulaires mobiles.
+<a href="#q12">
+    <button class="bnt-reponse">Réponse</button>
+</a>
 
 
-<h4> <span class="check rouge" onclick="changerCouleur(this)">✓</span>7- Citez les 3 types de muscles et ce à quoi ils correspondent.<a href="#q7"> <button class="bnt-reponse">Réponse</button> </a> </h4> <br>
 
- 
+</h4> <br>
 
 
 
@@ -143,11 +470,30 @@
 
 
 
+<h4>
+<span
+    class="check rouge"
+    role="checkbox"
+    aria-checked="true"
+    aria-label="Case cochée, couleur rouge"
+    tabindex="0"
+    onclick="changerCouleur(this)"
+    onkeydown="
+        if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            changerCouleur(this);
+        }
+    "
+>✓</span>
 
+13- Quel est le rôle principal des fibrocartilages ? 
+<a href="#q13">
+    <button class="bnt-reponse">Réponse</button>
+</a>
 
 
 
-<h4> <span class="check rouge" onclick="changerCouleur(this)">✓</span>8- Citez les différents types d’os, leurs spécificités et un exemple pour chaque.<a href="#q8"> <button class="bnt-reponse">Réponse</button> </a> </h4> <br>
+</h4> <br>
 
 
 
@@ -155,54 +501,34 @@
 
 
 
+<h4>
+<span
+    class="check rouge"
+    role="checkbox"
+    aria-checked="true"
+    aria-label="Case cochée, couleur rouge"
+    tabindex="0"
+    onclick="changerCouleur(this)"
+    onkeydown="
+        if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            changerCouleur(this);
+        }
+    "
+>✓</span>
 
+14- Qu’est-ce qu’un muscle polygastrique, quels sont les insertions possibles des muscles ? 
+<a href="#q14">
+    <button class="bnt-reponse">Réponse</button>
+</a>
 
-<h4> <span class="check rouge" onclick="changerCouleur(this)">✓</span>>9- De quoi se compose la ceinture scapulaire, à quoi sert-elle ? Même question pour la ceinture pelvienne <a href="#q9"> <button class="bnt-reponse">Réponse</button> </a> </h4> <br>
 
 
+</h4> <br>
 
 
 
- 
-
-<br>
-
-<h4> <span class="check rouge" onclick="changerCouleur(this)">✓</span>>10- Qu’est-ce que la jambe ? Et le bras ?  <a href="#q10"> <button class="bnt-reponse">Réponse</button> </a> </h4> 
-
-
-
-
-
-
-
-
-
-<br>
-
-
-
-
-
-<h4>11-  Citez les 3 catégories d’articulations, définissez-les succinctement. <a href="#q11"> <button class="bnt-reponse">Réponse</button>   </a></h4> 
-
-<br>
-
-
-<h4>12-  Citez et définissez les types articulaires mobiles. <a href="#q12"> <button class="bnt-reponse">Réponse</button>   </a></h4> 
-
-
-<br>
-
-
-
-
-<h4>13- Quel est le rôle principal des fibrocartilages ?  <a href="#q13">  <button class="bnt-reponse">Réponse</button> </a></h4> 
- 
-
-<br>
-
-
-<h4>14- Qu’est-ce qu’un muscle polygastrique, quels sont les insertions possibles des muscles ?  <a href="#q14"> <button class="bnt-reponse">Réponse</button>  </a></h4> <br><br><br><br>
+<h4> <a href="#q14"> <button class="bnt-reponse">Réponse</button>  </a></h4> <br><br><br><br>
 
 
 <h3>---------------------------------------------------------------------------------------</h3>
