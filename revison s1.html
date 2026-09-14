@@ -56,19 +56,115 @@
 
 
 
-<style> .check { display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; margin-right: 8px; color: white; border-radius: 3px; font-size: 17px; font-weight: bold; cursor: pointer; vertical-align: middle; } .rouge { background-color: red; } .orange { background-color: orange; } .vert { background-color: green; } /* Texte invisible destiné à la synthèse vocale */ .sr-only { position: absolute !important; width: 1px !important; height: 1px !important; padding: 0 !important; margin: -1px !important; overflow: hidden !important; clip: rect(0, 0, 0, 0) !important; white-space: nowrap !important; border: 0 !important; } </style> <script> function changerCouleur(coche) { let couleur; if (coche.classList.contains("rouge")) { coche.classList.remove("rouge"); coche.classList.add("orange"); couleur = "orange"; } else if (coche.classList.contains("orange")) { coche.classList.remove("orange"); coche.classList.add("vert"); couleur = "verte"; } else { coche.classList.remove("vert"); coche.classList.add("rouge"); couleur = "rouge"; } /* Mise à jour du texte accessible de la coche */ coche.setAttribute( "aria-label", "Case cochée, couleur " + couleur ); /* Mise à jour de l'annonce pour la synthèse vocale */ const annonce = document.getElementById("annonce-couleur"); if (annonce) { annonce.textContent = ""; setTimeout(function() { annonce.textContent = "Case cochée, couleur " + couleur; }, 50); } } </script> 
+</style>
+
+<style>
+  .check {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    margin-right: 8px;
+    color: white;
+    border-radius: 3px;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+    vertical-align: middle;
+  }
+  .rouge { background-color: red; }
+  .orange { background-color: orange; }
+  .vert { background-color: green; }
+
+  /* Texte invisible destiné à la synthèse vocale */
+  .sr-only {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
+  }
+</style>
+
+<script>
+  function changerCouleur(coche) {
+    let couleur;
+    if (coche.classList.contains("rouge")) {
+      coche.classList.remove("rouge");
+      coche.classList.add("orange");
+      couleur = "orange";
+    } else if (coche.classList.contains("orange")) {
+      coche.classList.remove("orange");
+      coche.classList.add("vert");
+      couleur = "verte";
+    } else {
+      coche.classList.remove("vert");
+      coche.classList.add("rouge");
+      couleur = "rouge";
+    }
+
+    /* Sauvegarde dans le localStorage */
+    const id = coche.id;
+    if (id) {
+      localStorage.setItem("coche_couleur_" + id, couleur);
+    }
+
+    /* Mise à jour du texte accessible */
+    coche.setAttribute("aria-label", "Case cochée, couleur " + couleur);
+
+    /* Annonce pour la synthèse vocale */
+    const annonce = document.getElementById("annonce-couleur");
+    if (annonce) {
+      annonce.textContent = "";
+      setTimeout(function() {
+        annonce.textContent = "Case cochée, couleur " + couleur;
+      }, 50);
+    }
+  }
+
+  /* Restauration de l'état au chargement de la page */
+  document.addEventListener("DOMContentLoaded", function() {
+    const coches = document.querySelectorAll(".check");
+    coches.forEach(function(coche) {
+      const id = coche.id;
+      if (!id) return;
+
+      const couleurSauvegardee = localStorage.getItem("coche_couleur_" + id);
+      if (couleurSauvegardee) {
+        coche.classList.remove("rouge", "orange", "vert");
+        const classeCouleur = couleurSauvegardee === "verte" ? "vert" : couleurSauvegardee;
+        coche.classList.add(classeCouleur);
+        coche.setAttribute("aria-label", "Case cochée, couleur " + couleurSauvegardee);
+      }
+    });
+  });
+</script>
 
 
 
 
 
-<!-- Zone invisible lue par la synthèse vocale --> <div id="annonce-couleur" class="sr-only" aria-live="assertive" aria-atomic="true" > Case cochée, couleur rouge </div> 
- 
+
+
+<!-- Zone invisible lue par la synthèse vocale -->
+<div id="annonce-couleur" class="sr-only" aria-live="assertive" aria-atomic="true">
+  Case cochée, couleur rouge
+</div>
+
+
+
+
 
 
 <h4>
-
-<span
+  <!-- Note : un attribut id="q1-check" a été ajouté pour servir de clé de stockage -->
+  <span
+    id="q1-check"
     class="check rouge"
     role="checkbox"
     aria-checked="true"
@@ -81,17 +177,15 @@
             changerCouleur(this);
         }
     "
->✓</span>
+  >✓</span>
 
-1- Donner la définition de l’anatomie ?
+  1- Donner la définition de l’anatomie ?
 
-<a href="#q1">
+  <a href="#q1">
     <button class="bnt-reponse">Réponse</button>
-</a>
-
-</h4> <br>
-
-
+  </a>
+</h4>
+<br>
 
 
 
@@ -102,6 +196,7 @@
 <h4>
 
 <span
+    id="q2-check"
     class="check rouge"
     role="checkbox"
     aria-checked="true"
@@ -114,7 +209,7 @@
             changerCouleur(this);
         }
     "
->✓</span>
+  >✓</span>
 
 2- Quelle est la position de référence ?
 
@@ -134,6 +229,7 @@
 <h4>
 
 <span
+    id="q3-check"
     class="check rouge"
     role="checkbox"
     aria-checked="true"
@@ -146,7 +242,7 @@
             changerCouleur(this);
         }
     "
->✓</span>
+  >✓</span>
 
 3- Si vous observez une planche anatomique ne présentant pas de légende, est ce un droit ou un gauche, pourquoi ?
 
@@ -166,6 +262,7 @@
  <h4>
 
 <span
+    id="q4-check"
     class="check rouge"
     role="checkbox"
     aria-checked="true"
@@ -178,7 +275,7 @@
             changerCouleur(this);
         }
     "
->✓</span>
+  >✓</span>
 
 4- Citez et définissez les plans anatomiques de références. 
 
@@ -199,6 +296,7 @@
 <h4>
 
 <span
+    id="q5-check"
     class="check rouge"
     role="checkbox"
     aria-checked="true"
@@ -211,7 +309,7 @@
             changerCouleur(this);
         }
     "
->✓</span>
+  >✓</span>
 
 5- Citez les axes associés à leurs plans respectifs. 
 
@@ -231,6 +329,7 @@
  <h4>
 
 <span
+    id="q6-check"
     class="check rouge"
     role="checkbox"
     aria-checked="true"
@@ -243,7 +342,7 @@
             changerCouleur(this);
         }
     "
->✓</span>
+  >✓</span>
 
 6- Que signifie médial, latéral, crânial, caudal ?
 
@@ -268,6 +367,7 @@
 <br><h4>
 
 <span
+    id="q7-check"
     class="check rouge"
     role="checkbox"
     aria-checked="true"
@@ -280,7 +380,7 @@
             changerCouleur(this);
         }
     "
->✓</span>
+  >✓</span>
 
 7- Citez les 3 types de muscles et ce à quoi ils correspondent.
 
@@ -309,6 +409,7 @@
 <h4>
 
 <span
+    id="q8-check"
     class="check rouge"
     role="checkbox"
     aria-checked="true"
@@ -321,7 +422,7 @@
             changerCouleur(this);
         }
     "
->✓</span>
+  >✓</span>
 
 8- Citez les différents types d’os, leurs spécificités et un exemple pour chaque.
 
@@ -342,6 +443,7 @@
 <h4>
 
 <span
+    id="q9-check"
     class="check rouge"
     role="checkbox"
     aria-checked="true"
@@ -354,7 +456,7 @@
             changerCouleur(this);
         }
     "
->✓</span>
+  >✓</span>
 
 9- De quoi se compose la ceinture scapulaire, à quoi sert-elle ? Même question pour la ceinture pelvienne 
 
@@ -375,6 +477,7 @@
 
 <h4>
 <span
+    id="q10-check"
     class="check rouge"
     role="checkbox"
     aria-checked="true"
@@ -387,7 +490,7 @@
             changerCouleur(this);
         }
     "
->✓</span>
+  >✓</span>
 
 10- Qu’est-ce que la jambe ? Et le bras ? 
 
@@ -413,6 +516,7 @@
 
 <h4>
 <span
+    id="q11-check"
     class="check rouge"
     role="checkbox"
     aria-checked="true"
@@ -425,7 +529,7 @@
             changerCouleur(this);
         }
     "
->✓</span>
+  >✓</span>
 
 11-  Citez les 3 catégories d’articulations, définissez-les succinctement.
 
@@ -444,6 +548,7 @@
 
 <h4>
 <span
+    id="q12-check"
     class="check rouge"
     role="checkbox"
     aria-checked="true"
@@ -456,7 +561,7 @@
             changerCouleur(this);
         }
     "
->✓</span>
+  >✓</span>
 
 12-  Citez et définissez les types articulaires mobiles.
 <a href="#q12">
@@ -476,6 +581,7 @@
 
 <h4>
 <span
+    id="q13-check"
     class="check rouge"
     role="checkbox"
     aria-checked="true"
@@ -488,7 +594,7 @@
             changerCouleur(this);
         }
     "
->✓</span>
+  >✓</span>
 
 13- Quel est le rôle principal des fibrocartilages ? 
 <a href="#q13">
@@ -507,6 +613,7 @@
 
 <h4>
 <span
+    id="q14-check"
     class="check rouge"
     role="checkbox"
     aria-checked="true"
@@ -519,7 +626,7 @@
             changerCouleur(this);
         }
     "
->✓</span>
+  >✓</span>
 
 14- Qu’est-ce qu’un muscle polygastrique, quels sont les insertions possibles des muscles ? 
 <a href="#q14">
